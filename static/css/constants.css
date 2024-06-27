@@ -1,0 +1,26 @@
+:root {
+    --color-black: #070b17;
+    --color-blue-light: #2d55c9;
+    --color-blue-dark: #1b3174;
+    --color-orange: #efbc01;
+    --color-gray: #f1f1f1;
+    --color-white: #ffffff;
+
+    --color-selection: rgba(27, 49, 116, .2);
+
+    --fs-s: 13px;
+    --fs-base: 16px;
+    --fs-m: 20px;
+    --fs-l: 26px;
+    --fs-xl: 33px;
+    --fs-xxl: 42px;
+
+    --spacing-s: 4px;
+    --spacing-base: 7px;
+    --spacing-m: 11px;
+    --spacing-l: 17px;
+    --spacing-xl: 27px;
+    --spacing-xxl: 44px;
+
+    --ff: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial;
+}

@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--ff), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+*,
+*:before,
+*:after {
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::selection {
+    background-color: var(--color-selection);
+}
+
+*:focus {
+    outline: none !important
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: var(--color-black);
+    font-size: var(--fs-l);
+    font-family: var(--ff), sans-serif;
+    margin: 0;
+}
+
+a, button {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    color: var(--color-black);
+    font-size: var(--fs-base);
+    font-family: var(--ff), sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 var(--spacing-base);
+    margin: 0 auto;
+    text-align: center;
+    height: auto;
+}
+
+.page {
+    overflow: hidden;
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--spacing-base) 0 0;
+}
