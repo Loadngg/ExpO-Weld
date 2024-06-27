@@ -1,0 +1,13 @@
+.anim-item {
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+.anim-item.show {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+.intro {
+    transform: translateY(10%);
+}

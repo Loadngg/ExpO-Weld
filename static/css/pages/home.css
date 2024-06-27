@@ -1,0 +1,4 @@
+.intro__inner img {
+    border-radius: var(--spacing-base);
+    overflow: hidden;
+}
