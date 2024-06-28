@@ -35,7 +35,7 @@ MIDDLEWARE = [
     "django_browser_reload.middleware.BrowserReloadMiddleware"
 ]
 
-ROOT_URLCONF = 'ptk.urls'
+ROOT_URLCONF = 'expoWeld.urls'
 
 TEMPLATES = [
     {
@@ -54,7 +54,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ptk.wsgi.application'
+WSGI_APPLICATION = 'expoWeld.wsgi.application'
 
 DATABASES = {
     'default': {

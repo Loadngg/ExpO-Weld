@@ -3,8 +3,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-admin.site.site_title = "Администрирование PTK-сварка"
-admin.site.site_header = "Администрирование PTK-сварка"
+admin.site.site_title = "Администрирование ExpO Weld"
+admin.site.site_header = "Администрирование ExpO Weld"
 
 urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),

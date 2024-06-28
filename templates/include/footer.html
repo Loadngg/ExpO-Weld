@@ -1,5 +1,60 @@
+{% load static %}
 <footer class="footer" id="footer">
     <div class="container">
-        <div class="footer__inner"></div>
+        <div class="footer__inner">
+            <div class="footer__col">
+                <a href="{% url 'home' %}" class="footer__logo">
+                    <img src="{% static 'images/logo/logo-white.png' %}" alt="Лого" class="footer__logo">
+                </a>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
+                    ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                    Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
+                    lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
+                    consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
+                    platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
+                    fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
+                </p>
+            </div>
+            <div class="footer__col">
+                <h3>Навигация по сайту</h3>
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">Каталог</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}">О компании</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}">Услуги</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}">Бренды</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>
+                        <span>ТЕЛЕФОН:</span>
+                        <a href="tel:+79158689998">+7 (915) 868-99-98</a>
+                    </li>
+                    <li>
+                        <span>EMAIL:</span>
+                        <a href="mailto:ipmiroahnik68@mail.ru">ipmiroahnik68@mail.ru</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer__ending">
+        <p>© Expo Weld, 2024</p>
+        <a href="https://миланиум.рф/">
+            Разработано в миланиум - создание сайтов под ключ
+        </a>
     </div>
 </footer>

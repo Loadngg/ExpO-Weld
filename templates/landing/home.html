@@ -1,14 +1,167 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Главная{% endblock %}
+{% block head_page_styles %}
+    <link rel="stylesheet" href="{% static 'css/pages/home.css' %}"/>
+{% endblock %}
 {% block content %}
     <section class="intro anim-item" id="intro">
         <div class="container">
             <div class="intro__inner">
-							<img src="{% static 'images/banners/1.jpg' %}" alt="баннер">
-							<img src="{% static 'images/banners/2.jpg' %}" alt="баннер">
-							<img src="{% static 'images/banners/3.jpg' %}" alt="баннер">
-							<img src="{% static 'images/banners/4.jpg' %}" alt="баннер">
+                <img src="{% static 'images/banners/1.jpg' %}" alt="баннер">
+                <img src="{% static 'images/banners/2.jpg' %}" alt="баннер">
+                <img src="{% static 'images/banners/3.jpg' %}" alt="баннер">
+                <img src="{% static 'images/banners/4.jpg' %}" alt="баннер">
+            </div>
+        </div>
+    </section>
+    <section class="brands anim-item">
+        <div class="container">
+            <div class="brands__inner">
+                <h1>Наши партнёры</h1>
+                <p class="subtitle">
+                    Наша команда гордится тем, что может полагаться на сильные и надежные партнерские отношения с
+                    лучшими компаниями отрасли. Мы высоко ценим доверие и поддержку наших партнеров, которые помогают
+                    нам предоставлять нашим клиентам товары и услуги высшего качества.
+                </p>
+                <div class="brands__block">
+                    <img src="https://place-hold.it/500x200" alt="">
+                    <img src="https://place-hold.it/500x200" alt="">
+                    <img src="https://place-hold.it/500x200" alt="">
+                    <img src="https://place-hold.it/500x200" alt="">
+                    <img src="https://place-hold.it/500x200" alt="">
+                    <img src="https://place-hold.it/500x200" alt="">
+                    <img src="https://place-hold.it/500x200" alt="">
+                    <img src="https://place-hold.it/500x200" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="questions anim-item">
+        <div class="container">
+            <div class="questions__inner">
+                <h1>Часто задаваемые вопросы</h1>
+                <p class="subtitle">
+                    Здесь вы найдете ответы на самые частые вопросы, которые задают наши клиенты. Эта информация поможет
+                    вам лучше понять наши товары и услуги, а также разрешить возможные вопросы и проблемы. Если вы не
+                    найдете ответа на свой вопрос, не стесняйтесь связаться с нами.
+                </p>
+                <ul id="questions-accordion" class="accordionjs">
+                    <li>
+                        <h3>Какой-то очень длинный часто задаваемый вопрос?</h3>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
+                            ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                            Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
+                            lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
+                            consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
+                            platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
+                            fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
+                        </div>
+                    </li>
+                    <li>
+                        <h3>Какой-то очень длинный часто задаваемый вопрос?</h3>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
+                            ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                            Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
+                            lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
+                            consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
+                            platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
+                            fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
+                        </div>
+                    </li>
+                    <li>
+                        <h3>Какой-то очень длинный часто задаваемый вопрос?</h3>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
+                            ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                            Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
+                            lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
+                            consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
+                            platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
+                            fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
+                        </div>
+                    </li>
+                    <li>
+                        <h3>Какой-то очень длинный часто задаваемый вопрос?</h3>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
+                            ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                            Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
+                            lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
+                            consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
+                            platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
+                            fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
+                        </div>
+                    </li>
+                    <li>
+                        <h3>Какой-то очень длинный часто задаваемый вопрос?</h3>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
+                            ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                            Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
+                            lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
+                            consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
+                            platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
+                            fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
+                        </div>
+                    </li>
+                    <li>
+                        <h3>Какой-то очень длинный часто задаваемый вопрос?</h3>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
+                            ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                            Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
+                            lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
+                            consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
+                            platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
+                            fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
+                        </div>
+                    </li>
+                    <li>
+                        <h3>Какой-то очень длинный часто задаваемый вопрос?</h3>
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
+                            ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                            Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
+                            lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
+                            consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
+                            platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
+                            fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="videos anim-item">
+        <div class="container">
+            <div class="videos__inner">
+                <h1>Видео</h1>
+                <p class="subtitle">
+                    Видео – это отличный способ увидеть наши товары в действии и узнать больше о наших услугах. Здесь вы
+                    найдете видео-обзоры наших товаров, инструкции по их использованию, а также отзывы наших клиентов.
+                    Это поможет вам сделать правильный выбор и убедиться в высоком качестве наших товаров и услуг.
+                </p>
+                <div class="videos__block">
+                    <iframe src="https://www.youtube.com/embed/njX2bu-_Vw4?si=aQUzzEjBqd3WoOyN"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/njX2bu-_Vw4?si=aQUzzEjBqd3WoOyN"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/njX2bu-_Vw4?si=aQUzzEjBqd3WoOyN"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/njX2bu-_Vw4?si=aQUzzEjBqd3WoOyN"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </section>

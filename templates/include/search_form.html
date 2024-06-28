@@ -1,0 +1,9 @@
+{% load static %}
+<form action="" method="post" class="search">
+    {% csrf_token %}
+    <input type="text" name="search_field" id="search_field" placeholder="Введите название или артикул"
+           value size="30" autocomplete="false" required>
+    <button class="button button--icon button--icon--transparent" type="submit">
+        <img src="{% static 'images/icons/search.svg' %}" alt="Найти">
+    </button>
+</form>

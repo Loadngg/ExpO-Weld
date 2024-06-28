@@ -1,4 +1,29 @@
+/* Intro */
 .intro__inner img {
     border-radius: var(--spacing-base);
     overflow: hidden;
+}
+
+/* Brands */
+.brands__block .slick-slide {
+    margin: 0 var(--spacing-l);
+    height: 200px;
+    border-radius: var(--spacing-base);
+    overflow: hidden;
+}
+
+.brands__block .slick-list {
+    margin: 0 calc(var(--spacing-l) * -1);
+}
+
+/* Video */
+.videos__block iframe {
+    height: 300px;
+    margin: 0 var(--spacing-l);
+    border-radius: var(--spacing-base);
+    overflow: hidden;
+}
+
+.videos__block .slick-list {
+    margin: 0 calc(var(--spacing-l) * -1);
 }

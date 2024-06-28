@@ -8,6 +8,9 @@
     transform: translate(0, 0);
 }
 
-.intro {
+.intro,
+.brands,
+.questions,
+.videos {
     transform: translateY(10%);
 }

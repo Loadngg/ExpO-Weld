@@ -6,21 +6,40 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-		<meta http-equiv="Pragma" content="no-cache"/>
-		<meta http-equiv="Expires" content="0"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
 
+    {# Fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    {# Libs #}
     <link rel="stylesheet" type="text/css" href="{% static 'libs/slick/slick.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'libs/slick/slick-theme.css' %}"/>
+    <link rel="stylesheet" href="{% static 'libs/accordion/accordion.css' %}"/>
 
+    {# Favicon #}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'images/favicon/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'images/favicon/safari-pinned-tab.svg' %}" color="#070b17">
+    <meta name="msapplication-TileColor" content="#070b17">
+    <meta name="theme-color" content="#ffffff">
+
+    {# Base styles #}
     <link rel="stylesheet" href="{% static 'css/reset.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/constants.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/animations.css' %}"/>
 
-    <link rel="stylesheet" href="{% static 'css/pages/home.css' %}"/>
+    {# Additional styles #}
+    {% block head_page_styles %}
+    {% endblock %}
 
-    <title>ПТК Сварка - {% block title %}{% endblock %}</title>
+    <title>ExpO Weld - {% block title %}{% endblock %}</title>
 </head>
 <body>
 {% include 'include/header.html' %}
@@ -30,9 +49,14 @@
 </main>
 {% include 'include/footer.html' %}
 
+<button class="button button--icon to_top" id="up-button">
+    <img src="{% static 'images/icons/arrow-up.svg' %}" alt="Наверх">
+</button>
+
 <script type="text/javascript" src="{% static 'libs/jquery-1.11.0.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'libs/jquery-migrate-1.2.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'libs/slick/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'libs/accordion/accordion.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/app.js' %}"></script>
 </body>
 </html>

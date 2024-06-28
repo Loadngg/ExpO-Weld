@@ -46,7 +46,51 @@ $(document).ready(function () {
         autoplay: true,
         autoplaySpeed: 3000,
         dots: true,
+        arrows: false,
+        fade: true,
+        infinity: true
+    });
+    $('.brands__block').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: false,
+        dots: false,
         arrows: true,
-        fade: true
+        fade: false,
+        infinity: true
+    });
+    $('.videos__block').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: false,
+        dots: false,
+        arrows: true,
+        fade: false,
+        infinity: true
     });
 });
+
+// Accordion
+$(document).ready(function () {
+    $("#questions-accordion").accordionjs();
+});
+
+// Scroll Top
+const header = document.getElementById("header");
+let headerH = header.clientHeight;
+let scrollOffset = window.scrollY;
+
+const scrollTopBtn = document.getElementById("up-button");
+scrollTopBtn.onclick = () => window.scrollTo({top: 0, behavior: "smooth"});
+
+checkPos(scrollOffset);
+
+window.onscroll = () => {
+    scrollOffset = window.scrollY;
+
+    checkPos(scrollOffset);
+};
+
+function checkPos(scrollOffset) {
+    scrollTopBtn.classList.toggle("hidden", scrollOffset < headerH);
+}

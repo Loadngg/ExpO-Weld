@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
-    <option name="sdkName" value="Python 3.6 (ptk)" />
+    <option name="sdkName" value="Python 3.6 (expoWeld)" />
   </component>
-  <component name="MaterialThemeProjectNewConfig">
-    <option name="metadata">
-      <MTProjectMetadataState>
-        <option name="migrated" value="true" />
-        <option name="pristineConfig" value="false" />
-        <option name="userId" value="33de8f48:18f49ae8a83:-7ff6" />
-      </MTProjectMetadataState>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.6 (ptk)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.6 (expoWeld)" project-jdk-type="Python SDK" />
 </project>
