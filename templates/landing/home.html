@@ -15,6 +15,43 @@
             </div>
         </div>
     </section>
+    <section class="popular_products anim-item">
+        <div class="container">
+            <div class="popular_products__inner">
+                <h1>Популярные товары</h1>
+                <p class="subtitle">
+                    Наш ассортимент постоянно обновляется, чтобы удовлетворить потребности наших клиентов. В этом
+                    разделе вы найдете самые популярные товары, которые отличаются высоким качеством и отличной ценой.
+                    Они были оценены нашими клиентами и стали настоящими бестселлерами.
+                </p>
+                <div class="popular_products__block">
+                    {% for product in popular_products %}
+                        <div class="card__item">
+                            <a href="{% url 'product_detail' slug=product.slug %}" class="card__item__img">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                {% else %}
+                                    <img src="https://place-hold.it/250x270" alt="{{ product.name }}">
+                                {% endif %}
+                            </a>
+                            <div class="card__item__title">
+                                <span>Артикул: {{ product.article }}</span>
+                                <a href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
+                            </div>
+                            <p class="card__item__description">{{ product.description|truncatechars:200 }}</p>
+                            <div class="card__item__price">
+                                <span>Цена:</span>
+                                <span>{{ product.price }} руб.</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="button popular_products__link" href="{% url 'category_list' %}">
+                    <span>Посмотреть каталог</span>
+                </a>
+            </div>
+        </div>
+    </section>
     <section class="brands anim-item">
         <div class="container">
             <div class="brands__inner">

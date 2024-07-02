@@ -1,0 +1,7 @@
+.catalog__inner {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: var(--spacing-l);
+    grid-row-gap: var(--spacing-l);
+}

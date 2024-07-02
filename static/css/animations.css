@@ -11,6 +11,8 @@
 .intro,
 .brands,
 .questions,
-.videos {
+.videos,
+.popular_products,
+.catalog {
     transform: translateY(10%);
 }

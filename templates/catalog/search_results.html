@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Каталог{% endblock %}
+{% block head_page_styles %}
+    <link rel="stylesheet" href="{% static 'css/pages/catalog.css' %}"/>
+{% endblock %}
+{% block content %}
+    <section class="catalog anim-item">
+        <div class="container">
+            <div class="catalog__inner">
+                {% for product in products %}
+                    <div class="card__item">
+                        <a href="{% url 'product_detail' slug=product.slug %}" class="card__item__img">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <img src="https://place-hold.it/250x270" alt="{{ product.name }}">
+                            {% endif %}
+                        </a>
+                        <div class="card__item__title">
+                            <span>Артикул: {{ product.article }}</span>
+                            <a href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
+                        </div>
+                        <p class="card__item__description">{{ product.description|truncatechars:200 }}</p>
+                        <div class="card__item__price">
+                            <span>Цена:</span>
+                            <span>{{ product.price }} руб.</span>
+                        </div>
+                    </div>
+                {% empty %}
+                    <h2 class="catalog__empty">В данной категории нет товаров</h2>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

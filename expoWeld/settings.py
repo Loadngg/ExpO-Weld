@@ -20,7 +20,10 @@ INSTALLED_APPS = [
 
     "django_browser_reload",
 
+    'modules.services',
+
     'landing.apps.LandingConfig',
+    'catalog.apps.CatalogConfig',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'catalog.context_processors.categories'
             ],
         },
     },

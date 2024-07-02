@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Каталог{% endblock %}
+{% block head_page_styles %}
+    <link rel="stylesheet" href="{% static 'css/pages/catalog.css' %}"/>
+{% endblock %}
+{% block content %}
+    <section class="catalog anim-item">
+        <div class="container">
+            <div class="catalog__inner">
+                {% for category in category_list %}
+                    <div class="card__item">
+                        <a href="{% url 'category_detail' slug=category.slug %}" class="card__item__img">
+                            {% if category.image %}
+                                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                            {% else %}
+                                <img src="https://place-hold.it/250x270" alt="{{ category.name }}">
+                            {% endif %}
+                        </a>
+                        <div class="card__item__title">
+                            <a href="{% url 'category_detail' slug=category.slug %}">{{ category.name }}</a>
+                        </div>
+                        <ul class="card__item__list">
+                            {% for subcategory in category.category_set.all %}
+                                <li>
+                                    <a href="{% url 'category_detail' slug=subcategory.slug %}">
+                                        {{ subcategory.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% empty %}
+                    <h2 class="catalog__empty">Категорий ещё не добавлены</h2>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

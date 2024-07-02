@@ -4,6 +4,22 @@
     overflow: hidden;
 }
 
+/* Popular products */
+.popular_products__block .slick-slide {
+    margin: 0 var(--spacing-l);
+    border-radius: var(--spacing-base);
+    overflow: hidden;
+}
+
+.popular_products__block .slick-list {
+    margin: 0 calc(var(--spacing-l) * -1);
+}
+
+.popular_products__link {
+    margin-top: var(--spacing-l);
+    width: fit-content;
+}
+
 /* Brands */
 .brands__block .slick-slide {
     margin: 0 var(--spacing-l);

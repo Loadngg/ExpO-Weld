@@ -39,6 +39,16 @@ if (animItems.length > 0) {
 }
 
 // Slick
+const base_config = {
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: false,
+    dots: false,
+    arrows: true,
+    fade: false,
+    infinite: true,
+};
+
 $(document).ready(function () {
     $('.intro__inner').slick({
         slidesToShow: 1,
@@ -50,23 +60,16 @@ $(document).ready(function () {
         fade: true,
         infinity: true
     });
+    $('.popular_products__block').slick({
+        ...base_config,
+        infinite: false,
+    });
     $('.brands__block').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: false,
-        dots: false,
-        arrows: true,
-        fade: false,
-        infinity: true
+        ...base_config,
     });
     $('.videos__block').slick({
+        ...base_config,
         slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: false,
-        dots: false,
-        arrows: true,
-        fade: false,
-        infinity: true
     });
 });
 
