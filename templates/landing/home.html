@@ -8,10 +8,18 @@
     <section class="intro anim-item" id="intro">
         <div class="container">
             <div class="intro__inner">
-                <img src="{% static 'images/banners/1.jpg' %}" alt="баннер">
-                <img src="{% static 'images/banners/2.jpg' %}" alt="баннер">
-                <img src="{% static 'images/banners/3.jpg' %}" alt="баннер">
-                <img src="{% static 'images/banners/4.jpg' %}" alt="баннер">
+                <div>
+                    <img src="{% static 'images/banners/1.jpg' %}" alt="баннер">
+                </div>
+                <div>
+                    <img src="{% static 'images/banners/2.jpg' %}" alt="баннер">
+                </div>
+                <div>
+                    <img src="{% static 'images/banners/3.jpg' %}" alt="баннер">
+                </div>
+                <div>
+                    <img src="{% static 'images/banners/4.jpg' %}" alt="баннер">
+                </div>
             </div>
         </div>
     </section>
@@ -28,15 +36,15 @@
                     {% for product in popular_products %}
                         <div class="card__item">
                             <a href="{% url 'product_detail' slug=product.slug %}" class="card__item__img">
-                                {% if product.image %}
-                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                                {% if product.first_image %}
+                                    <img src="{{ product.first_image.image.url }}" alt="{{ product.name }}">
                                 {% else %}
                                     <img src="https://place-hold.it/250x270" alt="{{ product.name }}">
                                 {% endif %}
                             </a>
                             <div class="card__item__title">
                                 <span>Артикул: {{ product.article }}</span>
-                                <a href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
+                                <a href="{% url 'product_detail' slug=product.slug %}">{{ product.name|truncatechars:50 }}</a>
                             </div>
                             <p class="card__item__description">{{ product.description|truncatechars:200 }}</p>
                             <div class="card__item__price">

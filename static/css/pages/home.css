@@ -1,7 +1,13 @@
 /* Intro */
+.intro {
+    background-color: var(--color-white);
+}
+
 .intro__inner img {
     border-radius: var(--spacing-base);
     overflow: hidden;
+    width: 100%;
+    height: auto;
 }
 
 /* Popular products */
@@ -9,6 +15,7 @@
     margin: 0 var(--spacing-l);
     border-radius: var(--spacing-base);
     overflow: hidden;
+    min-height: 630px;
 }
 
 .popular_products__block .slick-list {
@@ -30,6 +37,15 @@
 
 .brands__block .slick-list {
     margin: 0 calc(var(--spacing-l) * -1);
+}
+
+/* Questions */
+.questions {
+    background-color: var(--color-white);
+}
+
+.questions * {
+    color: var(--color-black);
 }
 
 /* Video */

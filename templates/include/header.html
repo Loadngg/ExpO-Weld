@@ -1,30 +1,17 @@
 {% load static %}
 <header class="header" id="header">
-    <div class="container">
-        <div class="header__inner">
-            <div class="header__top">
-                <a href="{% url 'home' %}" class="header__logo">
-                    <img src="{% static 'images/logo/logo.png' %}" alt="ПТК-Сварка">
-                </a>
-                <div class="header__contacts">
-                    <div class="header__contact">
-                        <span>ТЕЛЕФОН:</span>
-                        <a href="tel:+79158689998">+7 (915) 868-99-98</a>
-                    </div>
-                    <div class="header__contact">
-                        <span>EMAIL:</span>
-                        <a href="mailto:ipmiroahnik68@mail.ru">ipmiroahnik68@mail.ru</a>
-                    </div>
-                    {% include 'include/search_form.html' %}
-                </div>
-            </div>
-            <nav class="header__nav">
-                <a href="{% url 'category_list' %}" class="header__nav_link">Каталог</a>
-                <a href="{% url 'home' %}" class="header__nav_link">О компании</a>
-                <a href="{% url 'home' %}" class="header__nav_link">Услуги</a>
-                <a href="{% url 'home' %}" class="header__nav_link">Бренды</a>
-                <a href="{% url 'home' %}" class="header__nav_link">Контакты</a>
-            </nav>
-        </div>
+    <a href="{% url 'home' %}" class="header__logo">
+        <img src="{% static 'images/logo/logo-white.png' %}" alt="expoWeld">
+    </a>
+    <nav class="header__nav">
+        <a href="{% url 'category_list' %}" class="header__nav_link">Каталог</a>
+        <a href="{% url 'home' %}" class="header__nav_link">О компании</a>
+        <a href="{% url 'home' %}" class="header__nav_link">Услуги</a>
+        <a href="{% url 'home' %}" class="header__nav_link">Бренды</a>
+        <a href="{% url 'home' %}" class="header__nav_link">Контакты</a>
+    </nav>
+    <div class="header__contacts">
+        <a href="tel:+79158689998">+7 (915) 868-99-98</a>
+        {% include 'include/search_form.html' %}
     </div>
 </header>

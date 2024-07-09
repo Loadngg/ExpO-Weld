@@ -55,14 +55,12 @@ $(document).ready(function () {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        dots: true,
+        dots: false,
         arrows: false,
-        fade: true,
-        infinity: true
+        infinity: true,
     });
     $('.popular_products__block').slick({
         ...base_config,
-        infinite: false,
     });
     $('.brands__block').slick({
         ...base_config,
