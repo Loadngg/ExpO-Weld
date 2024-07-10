@@ -17,3 +17,9 @@ class ContactsView(TemplateView):
     """Контакты"""
 
     template_name = "landing/contacts.html"
+
+
+class AboutView(TemplateView):
+    """О нас"""
+
+    template_name = "landing/about.html"
