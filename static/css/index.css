@@ -321,6 +321,11 @@ section {
 .subheader {
     width: 100%;
     padding: var(--spacing-xxl) 0;
+    background-color: var(--color-gray-light);
+}
+
+.subheader * {
+    color: var(--color-black);
 }
 
 .subheader__inner {
@@ -365,7 +370,7 @@ section {
     top: 0;
     width: 1px;
     height: 100%;
-    background-color: var(--color-white);
+    background-color: var(--color-black);
     transform: rotate(16deg);
 }
 
@@ -376,7 +381,7 @@ section {
 /* Footer */
 .footer {
     background-color: var(--color-black);
-    padding: var(--spacing-xxl) 0;
+    padding: var(--spacing-xxl);
     display: flex;
     flex-direction: column;
     align-items: center;

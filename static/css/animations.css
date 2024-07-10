@@ -1,6 +1,6 @@
 .anim-item {
     opacity: 0;
-    transition: all 1s ease-in-out;
+    transition: all 1s ease;
 }
 
 .anim-item.show {
@@ -8,11 +8,9 @@
     transform: translate(0, 0);
 }
 
-.intro,
 .brands,
 .questions,
 .videos,
-.popular_products,
 .catalog {
     transform: translateY(10%);
 }

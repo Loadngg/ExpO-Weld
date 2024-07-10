@@ -51,13 +51,12 @@ const base_config = {
 
 $(document).ready(function () {
     $('.intro__inner').slick({
+        ...base_config,
         slidesToShow: 1,
-        slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        dots: false,
         arrows: false,
-        infinity: true,
+        fade: true,
     });
     $('.popular_products__block').slick({
         ...base_config,

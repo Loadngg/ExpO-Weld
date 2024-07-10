@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}Каталог{% endblock %}
 {% block head_page_styles %}
     <link rel="stylesheet" href="{% static 'css/pages/catalog.css' %}"/>
@@ -24,7 +25,7 @@
                         <p class="card__item__description">{{ product.description|truncatechars:200 }}</p>
                         <div class="card__item__price">
                             <span>Цена:</span>
-                            <span>{{ product.price }} руб.</span>
+                            <span>{{ product.price|intcomma }} ₽</span>
                         </div>
                     </div>
                 {% empty %}
