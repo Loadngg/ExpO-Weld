@@ -1,6 +1,6 @@
 /* Intro */
 .intro {
-    background-color: var(--color-white);
+    background-color: var(--color-gray-light);
 }
 
 .intro__inner img {
@@ -41,7 +41,7 @@
 
 /* Questions */
 .questions {
-    background-color: var(--color-white);
+    background-color: var(--color-gray-light);
 }
 
 .questions * {

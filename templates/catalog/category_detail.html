@@ -1,10 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Каталог{% endblock %}
+{% block title %}
+    Каталог - {{ category.name }}
+{% endblock %}
 {% block head_page_styles %}
     <link rel="stylesheet" href="{% static 'css/pages/catalog.css' %}"/>
 {% endblock %}
 {% block content %}
+    <section class="subheader">
+        <div class="container">
+            <div class="subheader__inner">
+                <h1>{{ category.name }}</h1>
+                <div class="subheader__breadcrumbs">
+                    <a href="{% url 'home' %}" class="subheader__breadcrumbs_breadcrumb">Главная</a>
+                    <a href="{% url 'category_list' %}" class="subheader__breadcrumbs_breadcrumb">Каталог</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if categories_list|length != 0 %}
+        <section class="categories">
+            <div class="container">
+                <div class="categories__inner">
+                    <span>Подкатегории:</span>
+                    {% for category__item in categories_list %}
+                        <a href="{{ category__item.get_absolute_url }}"
+                           class="categories__item">{{ category__item.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
     <section class="catalog anim-item">
         <div class="container">
             <div class="catalog__inner">
@@ -12,9 +38,9 @@
                     <div class="card__item">
                         <a href="{% url 'product_detail' slug=product.slug %}" class="card__item__img">
                             {% if product.first_image %}
-                                <img src="{{ product.first_image.image.url }}" alt="{{ product.name }}">
+                                <img src="{{ product.first_image.image.url }}" alt="{{ product.name }}"/>
                             {% else %}
-                                <img src="https://place-hold.it/250x270" alt="{{ product.name }}">
+                                <img src="https://place-hold.it/250x270" alt="{{ product.name }}"/>
                             {% endif %}
                         </a>
                         <div class="card__item__title">

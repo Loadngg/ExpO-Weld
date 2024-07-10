@@ -5,3 +5,33 @@
     grid-column-gap: var(--spacing-l);
     grid-row-gap: var(--spacing-l);
 }
+
+.categories {
+    width: 100%;
+    padding: 0;
+}
+
+.categories__inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: var(--spacing-m);
+    padding: 0;
+    border-bottom: 1px solid var(--color-white);
+}
+
+.categories__inner span {
+    color: var(--color-white);
+    font-size: var(--fs-base);
+}
+
+.categories__item {
+    font-size: var(--fs-base);
+    transition: color 0.2s ease;
+    text-transform: uppercase;
+}
+
+.categories__item:hover {
+    color: var(--color-red);
+}

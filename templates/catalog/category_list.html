@@ -1,10 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Каталог{% endblock %}
+{% block title %}
+    Каталог
+{% endblock %}
 {% block head_page_styles %}
     <link rel="stylesheet" href="{% static 'css/pages/catalog.css' %}"/>
 {% endblock %}
 {% block content %}
+    <section class="subheader">
+        <div class="container">
+            <div class="subheader__inner">
+                <h1>Каталог</h1>
+                <div class="subheader__breadcrumbs">
+                    <a href="{% url 'home' %}" class="subheader__breadcrumbs_breadcrumb">Главная</a>
+                    <a href="{% url 'category_list' %}" class="subheader__breadcrumbs_breadcrumb">Каталог</a>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="catalog anim-item">
         <div class="container">
             <div class="catalog__inner">
@@ -12,9 +25,9 @@
                     <div class="card__item">
                         <a href="{% url 'category_detail' slug=category.slug %}" class="card__item__img">
                             {% if category.image %}
-                                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                                <img src="{{ category.image.url }}" alt="{{ category.name }}"/>
                             {% else %}
-                                <img src="https://place-hold.it/250x270" alt="{{ category.name }}">
+                                <img src="https://place-hold.it/250x270" alt="{{ category.name }}"/>
                             {% endif %}
                         </a>
                         <div class="card__item__title">
@@ -23,9 +36,7 @@
                         <ul class="card__item__list">
                             {% for subcategory in category.category_set.all %}
                                 <li>
-                                    <a href="{% url 'category_detail' slug=subcategory.slug %}">
-                                        {{ subcategory.name }}
-                                    </a>
+                                    <a href="{% url 'category_detail' slug=subcategory.slug %}">{{ subcategory.name }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
