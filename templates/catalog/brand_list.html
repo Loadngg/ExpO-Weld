@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Бренды{% endblock %}
+{% block head_page_styles %}
+    <link rel="stylesheet" href="{% static 'css/pages/brands.css' %}"/>
+{% endblock %}
+{% block content %}
+    <section class="subheader">
+        <div class="container">
+            <div class="subheader__inner">
+                <h1>Бренды</h1>
+                <div class="subheader__breadcrumbs">
+                    <a href="{% url 'home' %}" class="subheader__breadcrumbs_breadcrumb">Главная</a>
+                    <a href="{% url 'brand_list' %}" class="subheader__breadcrumbs_breadcrumb">Бренды</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="brands anim-item">
+        <div class="container">
+            <div class="brands__inner">
+                {% for brand in brand_list %}
+                    <div class="brand__item">
+                        {% if brand.image %}
+                            <img src="{{ brand.logo.url }}" alt="{{ brand.name }}" class="brand__image">
+                        {% else %}
+                            <img src="https://place-hold.it/200" alt="{{ brand.name }}" class="brand__image">
+                        {% endif %}
+                        <a {% if brand.brand_site %}href="{{ brand.brand_site }}"{% endif %}
+                           class="brand__title"
+                        >
+                            <h2>{{ brand.name }}</h2>
+                        </a>
+                        <p class="brand__description">
+                            {{ brand.description }}
+                        </p>
+                    </div>
+                {% empty %}
+                    <h1>Мы пока что не добавили наших брендов-партнёров</h1>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

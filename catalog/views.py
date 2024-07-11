@@ -4,7 +4,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView
 
 from .forms import SearchForm
-from .models import Category, Product
+from .models import Category, Product, Brand
 
 
 class CategoryListView(ListView):
@@ -77,3 +77,11 @@ class SearchView(View):
             }
             return render(request, "catalog/search_results.html", queryset)
         return redirect("/")
+
+
+class BrandListView(ListView):
+    """Список брендов"""
+
+    model = Brand
+    queryset = Brand.objects.all().order_by('name')
+    ordering = ['name']
