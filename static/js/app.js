@@ -68,6 +68,10 @@ $(document).ready(function () {
         ...base_config,
         slidesToShow: 3,
     });
+    $('.product__images').slick({
+        ...base_config,
+        slidesToShow: 1,
+    });
 });
 
 // Accordion

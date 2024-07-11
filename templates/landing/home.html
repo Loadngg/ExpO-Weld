@@ -68,14 +68,13 @@
                     отношения с лучшими компаниями отрасли. Мы высоко ценим доверие и поддержку наших партнеров, которые
                     помогают нам предоставлять нашим клиентам товары и услуги высшего качества.</p>
                 <div class="brands__block">
-                    <img src="https://place-hold.it/500x200" alt=""/>
-                    <img src="https://place-hold.it/500x200" alt=""/>
-                    <img src="https://place-hold.it/500x200" alt=""/>
-                    <img src="https://place-hold.it/500x200" alt=""/>
-                    <img src="https://place-hold.it/500x200" alt=""/>
-                    <img src="https://place-hold.it/500x200" alt=""/>
-                    <img src="https://place-hold.it/500x200" alt=""/>
-                    <img src="https://place-hold.it/500x200" alt=""/>
+                    {% for brand in brands %}
+                        {% if brand.logo %}
+                            <img src="{{ brand.logo.url }}" alt="{{ brand.name }}"/>
+                        {% else %}
+                            <img src="https://place-hold.it/500x200" alt="{{ brand.name }}"/>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>

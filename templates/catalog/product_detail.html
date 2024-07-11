@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+    Каталог - {{ product.name }}
+{% endblock %}
+{% block head_page_styles %}
+    <link rel="stylesheet" href="{% static 'css/pages/product.css' %}"/>
+{% endblock %}
+{% block content %}
+    <section class="subheader">
+        <div class="container">
+            <div class="subheader__inner">
+                <h1>{{ product.name }}</h1>
+                <div class="subheader__breadcrumbs">
+                    <a href="{% url 'home' %}" class="subheader__breadcrumbs_breadcrumb">Главная</a>
+                    <a href="{% url 'category_list' %}" class="subheader__breadcrumbs_breadcrumb">Каталог</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="product anim-item">
+        <div class="container">
+            <div class="product__inner">
+                <div class="product__head">
+                    <div class="product__images">
+                        {% if product.productimage_set.all|length != 0 %}
+                            {% for image_item in product.productimage_set.all %}
+                                <img src="{{ image_item.image.url }}" alt="фото товара">
+                            {% endfor %}
+                        {% else %}
+                            <img src="https://place-hold.it/700x500&text=Нет%20изображения&bold&fontsize=16" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="product__stats">
+                        <h3>{{ product.name }}</h3>
+                        <p class="product__article">Артикул: {{ product.article }}</p>
+                        <p class="product__description">{{ product.description }}</p>
+                        <div class="product__price">
+                            <span>Цена:</span>
+                            <span>{{ product.price|intcomma }} ₽</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

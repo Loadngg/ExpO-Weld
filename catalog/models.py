@@ -58,7 +58,7 @@ class Product(models.Model):
     description = models.TextField("Описание")
     article = models.CharField("Артикул", unique=True, max_length=100, default=0)
     price = models.DecimalField("Цена", default=0, decimal_places=2, max_digits=11)
-    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, blank=True, null=True)
+    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Бренд")
     parent_category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True,
                                         verbose_name="Родительская категория")
     is_popular = models.BooleanField("Популярный товар", default=False)
