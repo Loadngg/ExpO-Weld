@@ -35,7 +35,7 @@
                             <span>Артикул: {{ product.article }}</span>
                             <a href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
                         </div>
-                        <p class="card__item__description">{{ product.description|truncatechars:200 }}</p>
+                        <p class="card__item__description">{{ product.short_description|truncatechars:200 }}</p>
                         <div class="card__item__price">
                             <span>Цена:</span>
                             <span>{{ product.price|intcomma }} ₽</span>

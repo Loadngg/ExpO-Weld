@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 from modules.services.utils import unique_slugify
+from tinymce.models import HTMLField
 
 
 class Brand(models.Model):
@@ -55,9 +56,10 @@ class Product(models.Model):
     """Товар"""
 
     name = models.CharField("Название", max_length=150)
-    description = models.TextField("Описание")
+    short_description = models.TextField("Краткое описание")
     article = models.CharField("Артикул", unique=True, max_length=100, default=0)
     price = models.DecimalField("Цена", default=0, decimal_places=2, max_digits=11)
+    full_description = HTMLField("Полное описание", blank=True, null=True)
     brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Бренд")
     parent_category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True,
                                         verbose_name="Родительская категория")
@@ -101,3 +103,47 @@ class ProductImage(models.Model):
     class Meta:
         verbose_name = "Фотография товара"
         verbose_name_plural = "Фотографии товаров"
+
+
+class ProductSpecType(models.Model):
+    """Тип характеристики"""
+
+    name = models.CharField("Название", max_length=150, unique=True)
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        verbose_name = "Тип характеристики"
+        verbose_name_plural = "Типы характеристик"
+
+
+class ProductSpec(models.Model):
+    """Характеристика"""
+
+    type = models.ForeignKey(ProductSpecType, on_delete=models.CASCADE, blank=False, null=False,
+                             verbose_name="Тип характеристики")
+    value = models.CharField("Значение", max_length=100)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Товар")
+
+    def __str__(self):
+        return f"{self.type} - {self.value}"
+
+    class Meta:
+        verbose_name = "Характеристика"
+        verbose_name_plural = "Характеристики"
+
+
+class ProductDocument(models.Model):
+    """Документ"""
+
+    name = models.CharField("Название", max_length=150, unique=True)
+    file = models.FileField("Документ", upload_to='product/docs', blank=False, null=False)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Товар")
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        verbose_name = "Документ товара"
+        verbose_name_plural = "Документы товара"

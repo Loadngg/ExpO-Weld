@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Brand, Category, Product, ProductImage
+from .models import Brand, Category, Product, ProductImage, ProductSpec, ProductSpecType, ProductDocument
 
 
 @admin.register(Brand)
@@ -50,8 +50,27 @@ class CategoryAdmin(admin.ModelAdmin):
     get_image.short_description = "Изображение"
 
 
+@admin.register(ProductSpecType)
+class ProductSpecTypeAdmin(admin.ModelAdmin):
+    list_display = ("id", "name")
+    list_display_links = ("id", "name")
+    save_as = True
+    search_fields = ("name",)
+
+
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
+    extra = 1
+
+
+class ProductSpecInline(admin.TabularInline):
+    model = ProductSpec
+    autocomplete_fields = ("type",)
+    extra = 1
+
+
+class ProductDocumentInline(admin.TabularInline):
+    model = ProductDocument
     extra = 1
 
 
@@ -64,10 +83,11 @@ class ProductAdmin(admin.ModelAdmin):
     autocomplete_fields = ("brand", "parent_category")
     search_fields = ("name", "article")
     list_filter = ["parent_category"]
-    inlines = [ProductImageInline]
+    inlines = [ProductImageInline, ProductSpecInline, ProductDocumentInline]
 
     fieldsets = (
-        ("Основная информация", {"fields": ("name", "description", ("article", "price"))}),
+        ("Основная информация",
+         {"fields": ("name", "short_description", ("article", "price"), "full_description")}),
         ("Принадлежность", {"fields": ("brand", "parent_category",)}),
         ("Опции", {"fields": ("is_popular", "slug")})
     )

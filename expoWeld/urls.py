@@ -9,6 +9,7 @@ admin.site.site_header = "Администрирование ExpO Weld"
 urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
     path('', include('landing.urls')),
     path('catalog/', include('catalog.urls')),
 ]
