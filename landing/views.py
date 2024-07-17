@@ -26,6 +26,12 @@ class AboutView(TemplateView):
     template_name = "landing/about.html"
 
 
+class ServicesView(TemplateView):
+    """Услуги"""
+
+    template_name = "landing/services.html"
+
+
 class ServicesDemonstrationView(TemplateView):
     """Услуги/Демонстрация"""
 

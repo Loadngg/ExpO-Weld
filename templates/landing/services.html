@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Услуги{% endblock %}
+{% block head_page_styles %}
+    <link rel="stylesheet" href="{% static 'css/pages/services.css' %}"/>
+{% endblock %}
+{% block content %}
+    <section class="subheader">
+        <div class="container">
+            <div class="subheader__inner">
+                <h1 class="title">Услуги</h1>
+                <div class="subheader__breadcrumbs">
+                    <a href="{% url 'home' %}" class="subheader__breadcrumbs_breadcrumb">Главная</a>
+                    <a href="{% url 'services' %}" class="subheader__breadcrumbs_breadcrumb">Услуги</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services__inner anim-item">
+                <h2>Наши услуги: комплексные решения для вашего бизнеса</h2>
+                <div class="services__text">
+                    <p>
+                        Мы предоставляем широкий спектр услуг, направленных на оптимизацию и развитие вашего бизнеса.
+                        Выберите подходящее решение и двигайтесь к успеху вместе с нами
+                    </p>
+                    <div class="services__list">
+                        <div>
+                            <img src="{% static 'images/services/demo.jpg' %}" alt="демонстрация">
+                            <a class="link" href="{% url 'services.demonstration' %}">Демонстрация</a>
+                        </div>
+                        <div>
+                            <img src="{% static 'images/services/delivery.jpg' %}" alt="доставка">
+                            <a class="link" href="{% url 'services.delivery' %}">Доставка</a>
+                        </div>
+                        <div>
+                            <img src="{% static 'images/services/warranty.webp' %}" alt="гарантия">
+                            <a class="link" href="{% url 'services.warranty' %}">Гарантия</a>
+                        </div>
+                        <div>
+                            <img src="{% static 'images/services/repair.jpg' %}" alt="ремонт">
+                            <a class="link" href="{% url 'services.repair' %}">Ремонт</a>
+                        </div>
+                        <div>
+                            <img src="{% static 'images/services/leasing.webp' %}" alt="лизинг">
+                            <a class="link" href="{% url 'services.leasing' %}">Лизинг</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
