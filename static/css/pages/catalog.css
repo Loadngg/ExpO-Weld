@@ -1,3 +1,23 @@
+.catalog__block {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--spacing-xl);
+}
+
+.catalog__block form {
+    min-width: 300px;
+}
+
+.catalog__block form button {
+    margin-bottom: var(--spacing-m);
+    width: fit-content;
+}
+
+.catalog__block form a {
+    width: fit-content;
+}
+
 .catalog__inner {
     margin: 0 auto;
     display: grid;

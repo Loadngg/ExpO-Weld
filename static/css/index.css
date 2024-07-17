@@ -96,6 +96,7 @@ button {
 
 .button {
     font-size: var(--fs-m);
+    line-height: 1.6;
     font-weight: 700;
     padding: var(--spacing-m) var(--spacing-xl);
     color: var(--color-black);
@@ -219,6 +220,7 @@ section {
 .acc_head {
     padding: var(--spacing-l) !important;
     margin-bottom: 0;
+    color: var(--color-black);
 }
 
 .acc_content {
@@ -227,6 +229,7 @@ section {
     font-weight: 300;
     text-align: left;
     background-color: var(--color-white);
+    color: var(--color-black);
 }
 
 .accordionjs .acc_section {

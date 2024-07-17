@@ -77,6 +77,10 @@ $(document).ready(function () {
 // Accordion
 $(document).ready(function () {
     $("#questions-accordion").accordionjs();
+    $("#filters-accordion").accordionjs({
+        closeAble: true,
+        closeOther: false,
+    });
 });
 
 // Scroll Top

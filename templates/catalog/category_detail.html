@@ -34,29 +34,60 @@
     {% endif %}
     <section class="catalog anim-item">
         <div class="container">
-            <div class="catalog__inner">
-                {% for product in products %}
-                    <div class="card__item">
-                        <a href="{% url 'product_detail' slug=product.slug %}" class="card__item__img">
-                            {% if product.first_image %}
-                                <img src="{{ product.first_image.image.url }}" alt="{{ product.name }}"/>
-                            {% else %}
-                                <img src="https://place-hold.it/250x270" alt="{{ product.name }}"/>
-                            {% endif %}
-                        </a>
-                        <div class="card__item__title">
-                            <span>Артикул: {{ product.article }}</span>
-                            <a href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
+            <div class="catalog__block">
+                <form action="" method="get">
+                    <ul id="filters-accordion" class="accordionjs">
+                        {% for spec_type, values in spec_types.items %}
+                            <li class="acc_active">
+                                <h4>{{ spec_type.name }}</h4>
+                                <ul>
+                                    {% for value in values %}
+                                        <li>
+                                            <label>
+                                                <input type="checkbox"
+                                                       name="spec_type_id_{{ spec_type.id }}_spec_{{ value }}"
+                                                       value="{{ value }}"
+                                                        {% if spec_type.id in spec_type_ids and value in spec_type_values %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                                {{ value }}
+                                            </label>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <button class="button" type="submit">Отфильтровать</button>
+                    <a href="{% url 'category_detail' slug=category.slug %}" class="button" type="submit">Очистить
+                        фильтры</a>
+                </form>
+
+                <div class="catalog__inner">
+                    {% for product in products %}
+                        <div class="card__item">
+                            <a href="{% url 'product_detail' slug=product.slug %}" class="card__item__img">
+                                {% if product.first_image %}
+                                    <img src="{{ product.first_image.image.url }}" alt="{{ product.name }}"/>
+                                {% else %}
+                                    <img src="https://place-hold.it/250x270" alt="{{ product.name }}"/>
+                                {% endif %}
+                            </a>
+                            <div class="card__item__title">
+                                <span>Артикул: {{ product.article }}</span>
+                                <a href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
+                            </div>
+                            <p class="card__item__description">{{ product.short_description|truncatechars:200 }}</p>
+                            <div class="card__item__price">
+                                <span>Цена:</span>
+                                <span>{{ product.price|intcomma }} ₽</span>
+                            </div>
                         </div>
-                        <p class="card__item__description">{{ product.short_description|truncatechars:200 }}</p>
-                        <div class="card__item__price">
-                            <span>Цена:</span>
-                            <span>{{ product.price|intcomma }} ₽</span>
-                        </div>
-                    </div>
-                {% empty %}
-                    <h2 class="catalog__empty">В данной категории нет товаров</h2>
-                {% endfor %}
+                    {% empty %}
+                        <h2 class="catalog__empty">В данной категории нет товаров</h2>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </section>
