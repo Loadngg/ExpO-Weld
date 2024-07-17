@@ -24,3 +24,33 @@ class AboutView(TemplateView):
     """О нас"""
 
     template_name = "landing/about.html"
+
+
+class ServicesDemonstrationView(TemplateView):
+    """Услуги/Демонстрация"""
+
+    template_name = "landing/services_demonstration.html"
+
+
+class ServicesDeliveryView(TemplateView):
+    """Услуги/Доставка"""
+
+    template_name = "landing/services_delivery.html"
+
+
+class ServicesWarrantyView(TemplateView):
+    """Услуги/Гарантия"""
+
+    template_name = "landing/services_warranty.html"
+
+
+class ServicesRepairView(TemplateView):
+    """Услуги/Ремонт"""
+
+    template_name = "landing/services_repair.html"
+
+
+class ServicesLeasingView(TemplateView):
+    """Услуги/Лизинг"""
+
+    template_name = "landing/services_leasing.html"
