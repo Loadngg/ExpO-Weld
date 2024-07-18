@@ -11,6 +11,11 @@
 .brands,
 .questions,
 .videos,
-.catalog {
+.catalog,
+.services__inner,
+.about__inner,
+.contacts,
+.contacts__map,
+.leasing__inner {
     transform: translateY(10%);
 }
