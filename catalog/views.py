@@ -20,7 +20,8 @@ def get_spec_types_filters():
     spec_types_list = ProductSpecType.objects.all()
     for spec_type in spec_types_list:
         spec_types[spec_type] = list(
-            set(ProductSpec.objects.filter(type__name=spec_type).values_list('value', flat=True).order_by("type__name")))
+            set(ProductSpec.objects.filter(type__name=spec_type).values_list('value', flat=True).order_by(
+                "type__name")))
 
     return spec_types
 

@@ -33,3 +33,19 @@
 .about__list li::marker {
     color: var(--color-red);
 }
+
+.about__logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-l);
+    flex-wrap: wrap;
+}
+
+.about__logos img {
+    flex: 1;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--spacing-base);
+    max-width: 25%;
+}
