@@ -15,15 +15,19 @@ class CategoryListView(ListView):
     ordering = ['name']
 
 
-def get_spec_types_filters():
+def get_spec_types_filters(products):
     spec_types = {}
-    spec_types_list = ProductSpecType.objects.all()
-    for spec_type in spec_types_list:
-        spec_types[spec_type] = list(
-            set(ProductSpec.objects.filter(type__name=spec_type).values_list('value', flat=True).order_by(
-                "type__name")))
+    for product in products:
+        for spec in product.productspec_set.all():
+            if spec.type not in spec_types:
+                spec_types[spec.type] = []
+            spec_types[spec.type].append(spec.value)
 
-    return spec_types
+    sorted_spec_types = {}
+    for key in sorted(spec_types.keys(), key=lambda x: x.name):
+        sorted_spec_types[key] = sorted(spec_types[key])
+
+    return sorted_spec_types
 
 
 class CategoryDetailView(DetailView):
@@ -38,7 +42,7 @@ class CategoryDetailView(DetailView):
         descendants = self.get_descendants(category)
         descendants.insert(0, category)
         context["categories_list"] = Category.objects.filter(parent_category__slug=self.kwargs['slug'])
-        context["spec_types"] = get_spec_types_filters()
+        context["spec_types"] = get_spec_types_filters(category.product_set.all())
 
         products = Product.objects.filter(parent_category__in=descendants)
         selected_specs = self.request.GET
