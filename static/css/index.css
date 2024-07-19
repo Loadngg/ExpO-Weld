@@ -154,6 +154,10 @@ section {
     padding: var(--spacing-xxl) 0;
 }
 
+b {
+    font-weight: 900;
+}
+
 .hidden {
     display: none !important;
 }

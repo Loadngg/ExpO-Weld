@@ -15,7 +15,6 @@
 .services__inner,
 .about__inner,
 .contacts,
-.contacts__map,
-.leasing__inner {
+.contacts__map {
     transform: translateY(10%);
 }
