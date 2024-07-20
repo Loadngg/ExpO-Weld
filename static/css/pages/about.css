@@ -45,7 +45,9 @@
 .about__logos img {
     flex: 1;
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
+    min-height: 200px;
+    max-height: 200px;
     border-radius: var(--spacing-base);
-    max-width: 25%;
+    max-width: 30%;
 }
