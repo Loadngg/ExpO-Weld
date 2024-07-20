@@ -87,39 +87,12 @@
                     информация поможет вам лучше понять наши товары и услуги, а также разрешить возможные вопросы и
                     проблемы. Если вы не найдете ответа на свой вопрос, не стесняйтесь связаться с нами.</p>
                 <ul id="questions-accordion" class="accordionjs">
-                    <li>
-                        <h3>Как работает доставка?</h3>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
-                            ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                            Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
-                            lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
-                            consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
-                            platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
-                            fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
-                        </div>
-                    </li>
-                    <li>
-                        <h3>Где находится компания?</h3>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
-                            ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                            Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
-                            lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
-                            consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
-                            platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
-                            fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
-                        </div>
-                    </li>
-                    <li>
-                        <h3>Бренды сварочных аппаратов?</h3>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet turpis vitae
-                            ipsum egestas accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                            Praesent scelerisque mauris nunc, in lobortis nunc ornare non. Ut tempor auctor nulla, non
-                            lobortis lacus eleifend eu. Donec aliquet libero sed velit semper vestibulum. Curabitur
-                            consectetur diam vitae rutrum tempor. Nam interdum ullamcorper tincidunt. In hac habitasse
-                            platea dictumst. Cras at tortor enim. Integer dapibus tempor odio. Nullam eu turpis a quam
-                            fringilla maximus. Donec rutrum tempus tellus, in mollis lectus varius sed.
-                        </div>
-                    </li>
+                    {% for question in popular_questions %}
+                        <li>
+                            <h3>{{ question.question }}</h3>
+                            <div>{{ question.answer }}</div>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

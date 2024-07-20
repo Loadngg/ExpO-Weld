@@ -34,7 +34,7 @@
                             <a href="{% url 'category_detail' slug=category.slug %}">{{ category.name }}</a>
                         </div>
                         <ul class="card__item__list">
-                            {% for subcategory in category.category_set.all %}
+                            {% for subcategory in category.category_set.all|dictsort:"name" %}
                                 <li>
                                     <a href="{% url 'category_detail' slug=subcategory.slug %}">{{ subcategory.name }}</a>
                                 </li>

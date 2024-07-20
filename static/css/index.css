@@ -618,6 +618,7 @@ b {
 }
 
 .card__item__list li {
+    text-align: left;
     margin-bottom: var(--spacing-s);
 }
 

@@ -1,5 +1,6 @@
 from django.views.generic import TemplateView
 from catalog.models import Product, Brand
+from landing.models import PopularQuestion
 
 
 class HomeView(TemplateView):
@@ -10,6 +11,7 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['popular_products'] = Product.objects.filter(is_popular=True)
+        context['popular_questions'] = PopularQuestion.objects.all()
         context['brands'] = Brand.objects.all()
         return context
 
