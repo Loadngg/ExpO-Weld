@@ -132,6 +132,10 @@
 }
 
 .product__documents__list a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--spacing-l);
     width: 100%;
     font-size: var(--fs-l);
     padding: var(--spacing-l);
@@ -144,4 +148,8 @@
     background-color: var(--color-gray-light);
     color: var(--color-black);
     flex: 1;
+}
+
+.product__documents__list a img {
+    max-width: 30px;
 }

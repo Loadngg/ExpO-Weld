@@ -6,7 +6,11 @@
 }
 
 .catalog__block form {
-    min-width: 300px;
+    min-width: 270px;
+}
+
+.catalog__block form ul {
+    margin-top: 0;
 }
 
 .catalog__block form button {
@@ -54,4 +58,8 @@
 
 .categories__item:hover {
     color: var(--color-red);
+}
+
+.catalog__show_filters__button {
+    display: none;
 }

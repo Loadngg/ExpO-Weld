@@ -27,23 +27,33 @@
                     </p>
                     <div class="services__list">
                         <div>
-                            <img src="{% static 'images/services/demo.jpg' %}" alt="демонстрация">
+                            <a href="{% url 'services.demonstration' %}">
+                                <img src="{% static 'images/services/demo.jpg' %}" alt="демонстрация">
+                            </a>
                             <a class="link" href="{% url 'services.demonstration' %}">Демонстрация</a>
                         </div>
                         <div>
-                            <img src="{% static 'images/services/delivery.jpg' %}" alt="доставка">
+                            <a href="{% url 'services.delivery' %}">
+                                <img src="{% static 'images/services/delivery.jpg' %}" alt="доставка">
+                            </a>
                             <a class="link" href="{% url 'services.delivery' %}">Доставка</a>
                         </div>
                         <div>
-                            <img src="{% static 'images/services/warranty.webp' %}" alt="гарантия">
+                            <a href="{% url 'services.warranty' %}">
+                                <img src="{% static 'images/services/warranty.webp' %}" alt="гарантия">
+                            </a>
                             <a class="link" href="{% url 'services.warranty' %}">Гарантия</a>
                         </div>
                         <div>
-                            <img src="{% static 'images/services/repair.jpg' %}" alt="ремонт">
+                            <a href="{% url 'services.repair' %}">
+                                <img src="{% static 'images/services/repair.jpg' %}" alt="ремонт">
+                            </a>
                             <a class="link" href="{% url 'services.repair' %}">Ремонт</a>
                         </div>
                         <div>
-                            <img src="{% static 'images/services/leasing.webp' %}" alt="лизинг">
+                            <a href="{% url 'services.leasing' %}">
+                                <img src="{% static 'images/services/leasing.webp' %}" alt="лизинг">
+                            </a>
                             <a class="link" href="{% url 'services.leasing' %}">Лизинг</a>
                         </div>
                     </div>

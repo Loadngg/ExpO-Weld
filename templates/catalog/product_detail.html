@@ -67,7 +67,10 @@
                             <div class="product__documents__list">
                                 {% for document in product.productdocument_set.all %}
                                     <a href="{{ document.url }}" target="_blank" download
-                                       rel="noopener noreferrer">🗎 {{ document.name }}</a>
+                                       rel="noopener noreferrer">
+                                        <img src="{% static 'images/icons/document.svg' %}" alt="Документ">
+                                        {{ document.name }}
+                                    </a>
                                 {% endfor %}
                             </div>
                         </div>

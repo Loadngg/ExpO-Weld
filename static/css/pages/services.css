@@ -45,22 +45,24 @@
     padding: var(--spacing-m);
 }
 
-.services__list a {
+.services__list a:last-child {
     font-size: var(--fs-l);
     margin: 0 auto;
     font-weight: 700;
     color: var(--color-black);
 }
 
-.services__list a:hover {
+.services__list a:last-child:hover {
     color: var(--color-red);
 }
 
+.services__list a:first-child,
 .services__list img {
     width: 100%;
     height: auto;
     min-height: 200px;
     max-height: 200px;
     object-fit: cover;
+    object-position: center;
     border-radius: var(--spacing-base);
 }

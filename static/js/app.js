@@ -60,13 +60,61 @@ $(document).ready(function () {
     });
     $('.popular_products__block').slick({
         ...base_config,
+        responsive: [
+            {
+                breakpoint: 1270,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 590,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
     });
     $('.brands__block').slick({
         ...base_config,
+        responsive: [
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 590,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
     });
     $('.videos__block').slick({
         ...base_config,
         slidesToShow: 3,
+        responsive: [
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 770,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
     });
     $('.product__images').slick({
         ...base_config,
@@ -82,6 +130,16 @@ $(document).ready(function () {
         closeOther: false,
     });
 });
+
+const filters = document.getElementById('filters-form')
+
+function toggleFilters(event, button) {
+    event.preventDefault()
+    filters.classList.contains('hidden')
+        ? button.innerText = "Скрыть фильтры"
+        : button.innerText = "Показать фильтры"
+    filters.classList.toggle('hidden')
+}
 
 // Scroll Top
 const header = document.getElementById("header");
@@ -101,4 +159,9 @@ window.onscroll = () => {
 
 function checkPos(scrollOffset) {
     scrollTopBtn.classList.toggle("hidden", scrollOffset < headerH);
+}
+
+function toggleHeader(event) {
+    event.preventDefault()
+    header.classList.toggle('active')
 }

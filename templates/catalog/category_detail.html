@@ -36,7 +36,8 @@
         <div class="container">
             <div class="catalog__block">
                 {% if spec_types.items|length != 0 %}
-                    <form action="" method="get">
+                    <button class="button catalog__show_filters__button" onclick="toggleFilters(event, this)">Скрыть фильтры</button>
+                    <form action="" method="get" id="filters-form">
                         <ul id="filters-accordion" class="accordionjs">
                             {% for spec_type, values in spec_types.items %}
                                 <li class="acc_active">
@@ -60,9 +61,11 @@
                                 </li>
                             {% endfor %}
                         </ul>
-                        <button class="button" type="submit">Отфильтровать</button>
-                        <a href="{% url 'category_detail' slug=category.slug %}" class="button" type="submit">Очистить
-                            фильтры</a>
+                        <div>
+                            <button class="button" type="submit">Отфильтровать</button>
+                            <a href="{% url 'category_detail' slug=category.slug %}" class="button" type="submit">Очистить
+                                фильтры</a>
+                        </div>
                     </form>
                 {% endif %}
                 <div class="catalog__inner">

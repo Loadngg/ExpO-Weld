@@ -1,5 +1,8 @@
 {% load static %}
 <header class="header" id="header">
+    <button onclick="toggleHeader(event)">
+        <img src="{% static 'images/icons/close.svg' %}" alt="Меню">
+    </button>
     <a href="{% url 'home' %}" class="header__logo">
         <img src="{% static 'images/logo/logo-white.png' %}" alt="expoWeld">
     </a>
@@ -16,6 +19,7 @@
                 <a class="header__nav_link" href="{% url 'services.leasing' %}">Лизинг</a>
             </div>
         </div>
+        <a class="header__nav_link header__nav_link--mobile" href="{% url 'services' %}">Услуги</a>
         <a class="header__nav_link header__nav_link--mobile" href="{% url 'services.demonstration' %}">Демонстрация</a>
         <a class="header__nav_link header__nav_link--mobile" href="{% url 'services.delivery' %}">Доставка</a>
         <a class="header__nav_link header__nav_link--mobile" href="{% url 'services.warranty' %}">Гарантия</a>
@@ -28,4 +32,12 @@
         <a href="tel:+79158689998">+7 (915) 868-99-98</a>
         {% include 'include/search_form.html' %}
     </div>
+</header>
+<header class="header__mobile">
+    <a href="{% url 'home' %}" class="header__logo">
+        <img src="{% static 'images/logo/logo-white.png' %}" alt="expoWeld">
+    </a>
+    <button onclick="toggleHeader(event)">
+        <img src="{% static 'images/icons/menu.svg' %}" alt="Меню">
+    </button>
 </header>
