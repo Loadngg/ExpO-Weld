@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from catalog.models import Product, Brand
-from landing.models import PopularQuestion
+from landing.models import PopularQuestion, YouTubeVideo
 
 
 class HomeView(TemplateView):
@@ -13,6 +13,7 @@ class HomeView(TemplateView):
         context['popular_products'] = Product.objects.filter(is_popular=True)
         context['popular_questions'] = PopularQuestion.objects.all()
         context['brands'] = Brand.objects.all()
+        context['videos'] = YouTubeVideo.objects.all()
         return context
 
 

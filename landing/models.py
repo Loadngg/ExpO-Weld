@@ -13,3 +13,17 @@ class PopularQuestion(models.Model):
     class Meta:
         verbose_name = "Частый вопрос"
         verbose_name_plural = "Частые вопросы"
+
+
+class YouTubeVideo(models.Model):
+    """Видео с youtube"""
+
+    name = models.CharField("Название", max_length=200)
+    url = models.URLField("Ссылка на видео")
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        verbose_name = "Видео с youtube"
+        verbose_name_plural = "Видео с youtube"
