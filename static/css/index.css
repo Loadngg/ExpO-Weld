@@ -398,7 +398,8 @@ b {
 }
 
 .nav__floating .header__nav_link {
-    font-size: var(--fs-base);
+    font-size: var(--fs-s);
+    text-align: left;
 }
 
 /* Subheader */

@@ -128,6 +128,7 @@ $(document).ready(function () {
     $("#filters-accordion").accordionjs({
         closeAble: true,
         closeOther: false,
+        activeIndex: false
     });
 });
 

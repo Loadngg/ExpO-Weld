@@ -7,20 +7,16 @@
         <img src="{% static 'images/logo/logo-white.png' %}" alt="expoWeld">
     </a>
     <nav class="header__nav">
-        {% if context_categories|length > 0 %}
-            <div class="header__nav_link header__nav_link--pc header__nav_link__floating">
-                <a class="header__nav_link" href="{% url 'category_list' %}">Каталог</a>
-                <div class="nav__floating">
-                    {% for category in context_categories %}
-                        <a class="header__nav_link"
-                           href="{% url 'category_detail' slug=category.slug %}">{{ category.name|upper }}</a>
-                    {% endfor %}
-                </div>
+        <div class="header__nav_link header__nav_link--pc header__nav_link__floating">
+            <a class="header__nav_link" href="{% url 'category_list' %}">Каталог</a>
+            <div class="nav__floating">
+                {% for category in context_categories %}
+                    <a class="header__nav_link"
+                       href="{% url 'category_detail' slug=category.slug %}">{{ category.name }}</a>
+                {% endfor %}
             </div>
-        {% else %}
-            <a href="{% url 'category_list' %}" class="header__nav_link">Каталог</a>
-        {% endif %}
-
+        </div>
+        <a class="header__nav_link header__nav_link--mobile" href="{% url 'category_list' %}">Каталог</a>
         <a href="{% url 'about' %}" class="header__nav_link">О компании</a>
         <div class="header__nav_link header__nav_link--pc header__nav_link__floating">
             <a class="header__nav_link" href="{% url 'services' %}">Услуги</a>

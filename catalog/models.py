@@ -109,6 +109,7 @@ class ProductSpecType(models.Model):
     """Тип характеристики"""
 
     name = models.CharField("Название", max_length=150, unique=True)
+    is_filter = models.BooleanField("Является фильтром", default=False)
 
     def __str__(self):
         return str(self.name)
@@ -137,7 +138,7 @@ class ProductSpec(models.Model):
 class ProductDocument(models.Model):
     """Документ"""
 
-    name = models.CharField("Название", max_length=150, unique=True)
+    name = models.CharField("Название", max_length=150)
     file = models.FileField("Документ", upload_to='product/docs', blank=False, null=False)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Товар")
 

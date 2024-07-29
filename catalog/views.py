@@ -19,13 +19,20 @@ def get_spec_types_filters(products):
     spec_types = {}
     for product in products:
         for spec in product.productspec_set.all():
+            if not spec.type.is_filter:
+                continue
+
             if spec.type not in spec_types:
                 spec_types[spec.type] = []
-            spec_types[spec.type].append(spec.value)
+            spec_types[spec.type].append(spec.value.replace(",", "."))
 
     sorted_spec_types = {}
     for key in sorted(spec_types.keys(), key=lambda x: x.name):
-        sorted_spec_types[key] = sorted(spec_types[key])
+        values = sorted(list(set(spec_types[key])))
+        if len(values) == 1:
+            continue
+
+        sorted_spec_types[key] = values
 
     return sorted_spec_types
 

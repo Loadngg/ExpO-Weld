@@ -40,8 +40,8 @@
                     <form action="" method="get" id="filters-form">
                         <ul id="filters-accordion" class="accordionjs">
                             {% for spec_type, values in spec_types.items %}
-                                <li class="acc_active">
-                                    <h4>{{ spec_type.name }}</h4>
+                                <li>
+                                    <h5>{{ spec_type.name }}</h5>
                                     <ul>
                                         {% for value in values %}
                                             <li>

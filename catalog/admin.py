@@ -52,7 +52,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(ProductSpecType)
 class ProductSpecTypeAdmin(admin.ModelAdmin):
-    list_display = ("id", "name")
+    list_display = ("id", "name", "is_filter")
+    list_editable = ("is_filter",)
     list_display_links = ("id", "name")
     save_as = True
     search_fields = ("name",)
