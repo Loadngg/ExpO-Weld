@@ -63,3 +63,23 @@
 .catalog__show_filters__button {
     display: none;
 }
+
+.category__item {
+    margin-bottom: var(--spacing-xxl);
+}
+
+.popular_products__block .slick-slide {
+    margin: 0 var(--spacing-l);
+    border-radius: var(--spacing-base);
+    overflow: hidden;
+    min-height: 630px;
+}
+
+.popular_products__block .slick-list {
+    margin: 0 calc(var(--spacing-l) * -1);
+}
+
+.popular_products__link {
+    margin-top: var(--spacing-l);
+    width: fit-content;
+}

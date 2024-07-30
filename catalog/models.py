@@ -31,7 +31,6 @@ class Category(models.Model):
     """Категория"""
 
     name = models.CharField("Название", max_length=150)
-    image = models.ImageField("Изображение", upload_to='category/', blank=True, null=True)
     slug = models.SlugField(verbose_name="Ссылка", max_length=150, unique=True, default='', editable=False)
     parent_category = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True,
                                         verbose_name="Родительская категория")
@@ -46,6 +45,19 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse("category_detail", kwargs={"slug": self.slug})
+
+    def get_descendants(self):
+        descendants = []
+        for child in self.category_set.all():
+            descendants.append(child)
+            descendants.extend(child.get_descendants())
+        return descendants
+
+    @property
+    def products(self):
+        descendants = self.get_descendants()
+        descendants.insert(0, self)
+        return Product.objects.filter(parent_category__in=descendants)
 
     class Meta:
         verbose_name = "Категория"
@@ -110,6 +122,7 @@ class ProductSpecType(models.Model):
 
     name = models.CharField("Название", max_length=150, unique=True)
     is_filter = models.BooleanField("Является фильтром", default=False)
+    categories = models.ManyToManyField(Category, verbose_name="Категории, где фильтр будет виден")
 
     def __str__(self):
         return str(self.name)

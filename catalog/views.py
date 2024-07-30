@@ -4,7 +4,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView
 
 from .forms import SearchForm
-from .models import Category, Product, Brand, ProductSpecType, ProductSpec
+from .models import Category, Product, Brand, ProductSpecType
 
 
 class CategoryListView(ListView):
@@ -15,11 +15,15 @@ class CategoryListView(ListView):
     ordering = ['name']
 
 
-def get_spec_types_filters(products):
+def get_spec_types_filters(products, category):
     spec_types = {}
     for product in products:
         for spec in product.productspec_set.all():
-            if not spec.type.is_filter:
+            if (
+                    category not in spec.type.categories.all()
+                    or spec.type.categories is None
+                    or not spec.type.is_filter
+            ):
                 continue
 
             if spec.type not in spec_types:
@@ -46,28 +50,31 @@ class CategoryDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         category = self.get_object()
-        descendants = self.get_descendants(category)
-        descendants.insert(0, category)
         context["categories_list"] = Category.objects.filter(parent_category__slug=self.kwargs['slug'])
-        context["spec_types"] = get_spec_types_filters(category.product_set.all())
+        context["spec_types"] = get_spec_types_filters(category.product_set.all(), category)
 
-        products = Product.objects.filter(parent_category__in=descendants)
+        products = category.products
         selected_specs = self.request.GET
 
         if len(selected_specs) == 0:
             context['products'] = products
             return context
 
+        # selected_brand_id = selected_specs.get('brand')
+        # if selected_brand_id:
+        #     selected_brand = Brand.objects.get(id=selected_brand_id)
+        #     products = products.filter(brand=selected_brand)
+
         products_list = []
         spec_type_ids = []
         spec_type_values = []
         for spec_str in selected_specs:
             if spec_str.startswith('spec_'):
-                spec = spec_str.replace('spec_type_id_', '')
+                spec = spec_str.replace('spec_type_id_', '').split("_spec_")
                 spec_type_id = int(spec[0])
                 spec_type_ids.append(spec_type_id)
 
-                spec_value = spec.split("_spec_")[1]
+                spec_value = spec[1]
                 spec_type_values.append(spec_value)
                 spec_type = ProductSpecType.objects.get(id=spec_type_id)
 
@@ -77,13 +84,6 @@ class CategoryDetailView(DetailView):
         context['spec_type_values'] = spec_type_values
         context['products'] = set(products_list)
         return context
-
-    def get_descendants(self, category):
-        descendants = []
-        for child in category.category_set.all():
-            descendants.append(child)
-            descendants.extend(self.get_descendants(child))
-        return descendants
 
 
 class ProductDetailView(DetailView):

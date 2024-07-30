@@ -27,16 +27,16 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "get_image")
+    list_display = ("id", "name")
     list_display_links = ("id", "name")
     list_filter = ["parent_category"]
     save_as = True
-    readonly_fields = ("get_image", "slug")
+    readonly_fields = ("slug",)
     search_fields = ("name",)
     autocomplete_fields = ("parent_category",)
 
     fieldsets = (
-        ("Основная информация", {"fields": ("name", ("image", "get_image"),)}),
+        ("Основная информация", {"fields": ("name",)}),
         ("Родительская категория", {"fields": ("parent_category",)}),
         ("Опции", {"fields": (("slug",),)}),
     )
@@ -56,7 +56,9 @@ class ProductSpecTypeAdmin(admin.ModelAdmin):
     list_editable = ("is_filter",)
     list_display_links = ("id", "name")
     save_as = True
+    autocomplete_fields = ("categories",)
     search_fields = ("name",)
+    list_filter = ["is_filter"]
 
 
 class ProductImageInline(admin.TabularInline):
@@ -83,7 +85,7 @@ class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ("slug",)
     autocomplete_fields = ("brand", "parent_category")
     search_fields = ("name", "article")
-    list_filter = ["parent_category"]
+    list_filter = ["brand", "parent_category"]
     inlines = [ProductImageInline, ProductSpecInline, ProductDocumentInline]
 
     fieldsets = (

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %}
     Каталог
 {% endblock %}
@@ -20,27 +21,38 @@
     </section>
     <section class="catalog anim-item">
         <div class="container">
-            <div class="catalog__inner">
+            <div class="category__list">
                 {% for category in category_list %}
-                    <div class="card__item">
-                        <a href="{% url 'category_detail' slug=category.slug %}" class="card__item__img">
-                            {% if category.image %}
-                                <img src="{{ category.image.url }}" alt="{{ category.name }}"/>
-                            {% else %}
-                                <img src="https://place-hold.it/250x270" alt="{{ category.name }}"/>
-                            {% endif %}
-                        </a>
-                        <div class="card__item__title">
-                            <a href="{% url 'category_detail' slug=category.slug %}">{{ category.name }}</a>
+                    {% if category.products.all|length != 0 %}
+                        <div class="category__item">
+                            <h2>{{ category.name }}</h2>
+                            <div class="popular_products__block">
+                                {% for product in category.products.all|slice:":10" %}
+                                    <div class="card__item">
+                                        <a href="{% url 'product_detail' slug=product.slug %}" class="card__item__img">
+                                            {% if product.first_image %}
+                                                <img src="{{ product.first_image.image.url }}"
+                                                     alt="{{ product.name }}"/>
+                                            {% else %}
+                                                <img src="https://place-hold.it/250x270" alt="{{ product.name }}"/>
+                                            {% endif %}
+                                        </a>
+                                        <div class="card__item__title">
+                                            <span>Артикул: {{ product.article }}</span>
+                                            <a href="{% url 'product_detail' slug=product.slug %}">{{ product.name|truncatechars:25 }}</a>
+                                        </div>
+                                        <p class="card__item__description">{{ product.short_description|truncatechars:200 }}</p>
+                                        <div class="card__item__price">
+                                            <span>Цена:</span>
+                                            <span>{{ product.price|intcomma }} ₽</span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a class="button popular_products__link"
+                               href="{% url 'category_detail' slug=category.slug %}"><span>Посмотреть всё</span></a>
                         </div>
-                        <ul class="card__item__list">
-                            {% for subcategory in category.category_set.all|dictsort:"name" %}
-                                <li>
-                                    <a href="{% url 'category_detail' slug=subcategory.slug %}">{{ subcategory.name }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                    {% endif %}
                 {% empty %}
                     <h2 class="catalog__empty">Категорий ещё не добавлены</h2>
                 {% endfor %}

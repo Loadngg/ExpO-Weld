@@ -35,6 +35,9 @@
                     <div class="product__stats">
                         <h3>{{ product.name }}</h3>
                         <p class="product__article">Артикул: {{ product.article }}</p>
+                        {% if product.brand %}
+                            <p>Бренд: {{ product.brand }}</p>
+                        {% endif %}
                         <p class="product__description">{{ product.short_description }}</p>
                         <div class="product__price">
                             <span>Цена:</span>
