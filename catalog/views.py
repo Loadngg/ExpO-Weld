@@ -60,11 +60,6 @@ class CategoryDetailView(DetailView):
             context['products'] = products
             return context
 
-        # selected_brand_id = selected_specs.get('brand')
-        # if selected_brand_id:
-        #     selected_brand = Brand.objects.get(id=selected_brand_id)
-        #     products = products.filter(brand=selected_brand)
-
         products_list = []
         spec_type_ids = []
         spec_type_values = []
@@ -132,3 +127,10 @@ class BrandListView(ListView):
     model = Brand
     queryset = Brand.objects.all().order_by('name')
     ordering = ['name']
+
+
+class BrandDetailView(DetailView):
+    """Страница бренда"""
+
+    model = Brand
+    slug_field = "slug"

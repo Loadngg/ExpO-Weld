@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ brand.name }}{% endblock %}
+{% block head_page_styles %}
+    <link rel="stylesheet" href="{% static 'css/pages/brands.css' %}"/>
+{% endblock %}
+{% block content %}
+    <section class="subheader">
+        <div class="container">
+            <div class="subheader__inner">
+                <h1>{{ brand.name }}</h1>
+                <div class="subheader__breadcrumbs">
+                    <a href="{% url 'home' %}" class="subheader__breadcrumbs_breadcrumb">Главная</a>
+                    <a href="{% url 'brand_list' %}" class="subheader__breadcrumbs_breadcrumb">Бренды</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="brand anim-item">
+        <div class="container">
+            <div class="brand__inner">
+                <div class="brand__left">
+                    <h2>
+                        {{ brand.name }}
+                        {% if brand.brand_site %}
+                            -
+                            <a href="{{ brand.brand_site }}">Официальный сайт</a>
+                        {% endif %}
+                    </h2>
+
+                    <p class="brand__description">
+                        {{ brand.description }}
+                    </p>
+                </div>
+                <img class="brand__logo" src="{{ brand.logo.url }}" alt="{{ brand.name }}: логотип">
+            </div>
+        </div>
+    </section>
+{% endblock %}

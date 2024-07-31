@@ -20,21 +20,13 @@
         <div class="container">
             <div class="brands__inner">
                 {% for brand in brand_list %}
-                    <div class="brand__item">
+                    <a href="{% url 'brand_detail' slug=brand.slug %}" class="brand__item">
                         {% if brand.logo %}
                             <img src="{{ brand.logo.url }}" alt="{{ brand.name }}" class="brand__image">
                         {% else %}
                             <img src="https://place-hold.it/200" alt="{{ brand.name }}" class="brand__image">
                         {% endif %}
-                        <a {% if brand.brand_site %}href="{{ brand.brand_site }}"{% endif %}
-                           class="brand__title"
-                        >
-                            <h2>{{ brand.name }}</h2>
-                        </a>
-                        <p class="brand__description">
-                            {{ brand.description }}
-                        </p>
-                    </div>
+                    </a>
                 {% empty %}
                     <h1>Мы пока что не добавили наших брендов-партнёров</h1>
                 {% endfor %}

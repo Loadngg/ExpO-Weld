@@ -81,6 +81,27 @@
         min-width: 30%;
         max-width: 30%;
     }
+
+    /* Brands */
+    .brands__inner {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .brand__inner {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: var(--spacing-xxl);
+    }
+
+    .brand__left {
+        max-width: 100%;
+    }
+
+    .brand__logo {
+        max-width: 100%;
+        max-height: 350px;
+    }
 }
 
 @media screen and (max-width: 960px) {
@@ -226,8 +247,9 @@
 
 @media screen and (max-width: 670px) {
     /* Brands */
-    .brand__description {
-        max-width: initial;
+    .brands__inner {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
     }
 
     /* Contacts */
