@@ -83,3 +83,7 @@
     margin-top: var(--spacing-l);
     width: fit-content;
 }
+
+.slick-track {
+    margin-left: 0 !important;
+}

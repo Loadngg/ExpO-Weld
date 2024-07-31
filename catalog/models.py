@@ -31,6 +31,7 @@ class Category(models.Model):
     """Категория"""
 
     name = models.CharField("Название", max_length=150)
+    position = models.PositiveIntegerField("Позиция в навигации", default=1, null=False, blank=False)
     slug = models.SlugField(verbose_name="Ссылка", max_length=150, unique=True, default='', editable=False)
     parent_category = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True,
                                         verbose_name="Родительская категория")
@@ -122,7 +123,8 @@ class ProductSpecType(models.Model):
 
     name = models.CharField("Название", max_length=150, unique=True)
     is_filter = models.BooleanField("Является фильтром", default=False)
-    categories = models.ManyToManyField(Category, verbose_name="Категории, где фильтр будет виден")
+    categories = models.ManyToManyField(Category, verbose_name="Категории, где фильтр будет виден", blank=True,
+                                        null=True)
 
     def __str__(self):
         return str(self.name)

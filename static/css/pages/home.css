@@ -33,6 +33,7 @@
     height: 200px;
     border-radius: var(--spacing-base);
     overflow: hidden;
+    object-fit: contain;
 }
 
 .brands__block .slick-list {

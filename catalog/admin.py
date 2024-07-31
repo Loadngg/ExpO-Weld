@@ -27,8 +27,9 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("id", "name")
+    list_display = ("id", "name", "position")
     list_display_links = ("id", "name")
+    list_editable = ("position",)
     list_filter = ["parent_category"]
     save_as = True
     readonly_fields = ("slug",)
