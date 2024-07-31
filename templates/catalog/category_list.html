@@ -22,7 +22,7 @@
     <section class="catalog anim-item">
         <div class="container">
             <div class="category__list">
-                {% for category in category_list %}
+                {% for category in category_list|dictsort:"position" %}
                     {% if category.products.all|length != 0 %}
                         <div class="category__item">
                             <h2>{{ category.name }}</h2>

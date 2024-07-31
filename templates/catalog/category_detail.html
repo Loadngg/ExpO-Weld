@@ -23,7 +23,7 @@
         <div class="container">
             {% if categories_list|length != 0 %}
                 <div class="category__list">
-                    {% for category in categories_list %}
+                    {% for category in categories_list|dictsort:"name" %}
                         {% if category.product_set.all|length != 0 %}
                             <div class="category__item">
                                 <h2>{{ category.name }}</h2>
