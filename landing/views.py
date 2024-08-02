@@ -1,5 +1,10 @@
-from django.views.generic import TemplateView
+from django.core.mail import send_mail
+from django.http import JsonResponse
+from django.views.generic import TemplateView, View
+from django.conf import settings
+
 from catalog.models import Product, Brand
+from landing.forms import CallbackForm
 from landing.models import PopularQuestion, YouTubeVideo
 
 
@@ -63,3 +68,25 @@ class ServicesLeasingView(TemplateView):
     """Услуги/Лизинг"""
 
     template_name = "landing/services_leasing.html"
+
+
+class CallbackView(View):
+    """Форма обратного звонка"""
+
+    @staticmethod
+    def post(request):
+        form = CallbackForm(request.POST)
+
+        if not form.is_valid():
+            error_message = "Проверьте введённые данные"
+            return JsonResponse({'success': False, 'error_message': error_message})
+
+        subject = form.cleaned_data.get("full_name")
+        tel = form.cleaned_data.get("phone_number")
+        message = form.cleaned_data.get("message")
+        article = form.cleaned_data.get("article")
+        send_mail(f"{subject} {tel} артикул: {article}", message, settings.EMAIL_HOST_USER, [settings.EMAIL_STORAGE])
+        form.save()
+
+        success_message = "Ваш запрос был удачно отправлен"
+        return JsonResponse({'success': True, 'error_message': '', 'success_message': success_message})

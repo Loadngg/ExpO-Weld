@@ -1,0 +1,26 @@
+{% load static %}
+<div class="overflow transparent hidden" id="callback">
+    <div class="container">
+        <div class="overflow__inner">
+            <a onclick="toggleOverflowVisibility('callback', false)"
+               class="button button--icon button--icon--transparent">
+                <img src="{% static 'images/icons/close.svg' %}" alt="Закрыть"/>
+            </a>
+            <h2>Запросить цену</h2>
+            <form action="{% url 'callback' %}" method="post" class="overflow__block" id="callback-form">
+                {% csrf_token %}
+                <input type="text" name="full_name" id="full_name" placeholder="* Введите полное имя"
+                       value size="40" autocomplete="false" required>
+                <input type="text" name="phone_number" id="phone_number" placeholder="* Введите номер телефона"
+                       value size="40" autocomplete="false" required>
+                <textarea name="message" id="message" placeholder="Введите сообщение" rows="3"
+                          autocomplete="false"></textarea>
+                <input type="hidden" name="article" id="article" value="{{ product_article }}" required>
+                <div class="overflow__message hidden"></div>
+                <button class="button" type="submit">
+                    <span>Подать заявку</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

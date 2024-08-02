@@ -37,7 +37,7 @@ class CategoryAdmin(admin.ModelAdmin):
     autocomplete_fields = ("parent_category",)
 
     fieldsets = (
-        ("Основная информация", {"fields": ("name",)}),
+        ("Основная информация", {"fields": ("name", "position")}),
         ("Родительская категория", {"fields": ("parent_category",)}),
         ("Опции", {"fields": (("slug",),)}),
     )

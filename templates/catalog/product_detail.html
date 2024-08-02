@@ -40,8 +40,14 @@
                         {% endif %}
                         <p class="product__description">{{ product.short_description }}</p>
                         <div class="product__price">
-                            <span>Цена:</span>
-                            <span>{{ product.price|intcomma }} ₽</span>
+                            {% if product.price == 0 %}
+                                <button class="button" onclick="toggleOverflowVisibility('callback', true)">
+                                    Узнать цену
+                                </button>
+                            {% else %}
+                                <span>Цена:</span>
+                                <span>{{ product.price|intcomma }} ₽</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -82,4 +88,5 @@
             </div>
         </div>
     </section>
+    {% include 'include/callback_form.html' with product_article=product.article %}
 {% endblock %}

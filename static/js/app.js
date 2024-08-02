@@ -166,3 +166,74 @@ function toggleHeader(event) {
     event.preventDefault()
     header.classList.toggle('active')
 }
+
+// Overflow
+const toggleOverflowVisibility = (formId, show = true) => {
+    const form = document.getElementById(formId);
+
+    form.classList.toggle(show ? 'hidden' : 'transparent', !show)
+    setTimeout(() => {
+        form.classList.toggle(show ? 'transparent' : 'hidden', !show)
+    }, 200)
+};
+
+// Callback Form
+const toggleFormMessage = (block, message, hiddenState) => {
+    block.innerText = message ? message : ""
+    block.classList.toggle('hidden', hiddenState ? hiddenState : !block.innerText.trim().length);
+}
+
+const formId = 'callback'
+const formBlock = document.getElementById(formId)
+const form = formBlock.querySelector(`#${formId}-form`)
+const formMessage = form.querySelector('.overflow__message');
+const submitButton = form.querySelector('.button');
+const overflowMessage = "overflow__message"
+const overflowMessageSuccess = `${overflowMessage}--success`
+const overflowMessageError = `${overflowMessage}--error`
+
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    let formData = new FormData(this);
+
+    formMessage.classList.remove(overflowMessageError)
+    formMessage.classList.remove(overflowMessageSuccess)
+    toggleFormMessage(formMessage, "Отправка...", false)
+    submitButton.classList.toggle('disabled', true);
+
+    fetch(this.action, {method: 'POST', body: formData, credentials: 'include'})
+        .then(response => response.json())
+        .then(data => {
+            if (data.error_message.length > 0) {
+                toggleFormMessage(formMessage, data.error_message)
+                formMessage.classList.add(overflowMessageError)
+                submitButton.classList.toggle('disabled', false);
+            }
+
+            if (!data.success) return;
+            if (data.success_message && data.error_message.length === 0) {
+                toggleFormMessage(formMessage, data.success_message)
+                if (formMessage.classList.contains(overflowMessageError)) {
+                    formMessage.classList.remove(overflowMessageError)
+                }
+                formMessage.classList.add(overflowMessageSuccess)
+
+                setTimeout(() => {
+                    toggleOverflowVisibility(formId, false)
+                    formMessage.classList.remove(overflowMessageError)
+                    formMessage.classList.remove(overflowMessageSuccess)
+                    submitButton.classList.toggle('disabled', false);
+                    form.reset()
+                    toggleFormMessage(formMessage)
+                }, 3000)
+
+                return;
+            }
+            window.location.href = data.redirect_url;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            toggleFormMessage(formMessage, 'Произошла ошибка при обработке запроса')
+            formMessage.classList.add(overflowMessageError)
+        });
+});

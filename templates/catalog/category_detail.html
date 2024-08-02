@@ -46,7 +46,13 @@
                                             <p class="card__item__description">{{ product.short_description|truncatechars:200 }}</p>
                                             <div class="card__item__price">
                                                 <span>Цена:</span>
-                                                <span>{{ product.price|intcomma }} ₽</span>
+                                                <span>
+                                                    {% if product.price == 0 %}
+                                                        Не указана
+                                                    {% else %}
+                                                        {{ product.price|intcomma }} ₽
+                                                    {% endif %}
+                                                </span>
                                             </div>
                                         </div>
                                     {% endfor %}
@@ -113,7 +119,13 @@
                                 <p class="card__item__description">{{ product.short_description|truncatechars:200 }}</p>
                                 <div class="card__item__price">
                                     <span>Цена:</span>
-                                    <span>{{ product.price|intcomma }} ₽</span>
+                                    <span>
+                                        {% if product.price == 0 %}
+                                            Не указана
+                                        {% else %}
+                                            {{ product.price|intcomma }} ₽
+                                        {% endif %}
+                                    </span>
                                 </div>
                             </div>
                         {% empty %}

@@ -124,7 +124,7 @@ class ProductSpecType(models.Model):
     name = models.CharField("Название", max_length=150, unique=True)
     is_filter = models.BooleanField("Является фильтром", default=False)
     categories = models.ManyToManyField(Category, verbose_name="Категории, где фильтр будет виден", blank=True,
-                                        null=True)
+                                        related_name="categories")
 
     def __str__(self):
         return str(self.name)

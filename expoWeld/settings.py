@@ -20,6 +20,7 @@ INSTALLED_APPS = [
 
     'django.contrib.humanize',
     'tinymce',
+    'phonenumber_field',
 
     'modules.services',
 
@@ -85,5 +86,14 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = "expoweld_callbacks@mail.ru"
+EMAIL_HOST_PASSWORD = "CKt4p1meHSxzHs5vkZD4"
+EMAIL_STORAGE = "expoweld@mail.ru"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

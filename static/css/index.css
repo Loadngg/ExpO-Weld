@@ -162,6 +162,10 @@ b {
     display: none !important;
 }
 
+.transparent {
+    opacity: 0 !important;
+}
+
 .container {
     width: 100%;
     max-width: calc(1400px + var(--spacing-xxl) * 2);
@@ -668,4 +672,95 @@ b {
     font-size: var(--fs-xxl);
     margin-bottom: var(--spacing-xxl);
     grid-column: span 4;
+}
+
+/* Overflow */
+.overflow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    background-color: var(--color-overflow-bg);
+
+    transition: all 200ms linear;
+}
+
+.overflow__inner {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.overflow__inner .button.button--icon {
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: 0;
+    bottom: 100%;
+    padding: 0 !important;
+    width: 80px !important;
+    height: 80px !important;
+}
+
+.overflow__block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-l);
+}
+
+.overflow__block input,
+.overflow__block textarea {
+    width: 100%;
+    background-color: var(--color-white);
+    border-radius: var(--spacing-l);
+    color: var(--color-black);
+    border: 1px solid var(--color-red);
+    font-size: var(--fs-l);
+    padding: var(--spacing-l);
+    text-align: center;
+    font-family: var(--ff), sans-serif !important;
+}
+
+.overflow__message {
+    width: 100%;
+    font-size: var(--fs-l);
+    padding: var(--spacing-l);
+    text-align: center;
+    font-family: var(--ff), sans-serif !important;
+    color: var(--color-black);
+}
+
+.overflow__message.overflow__message--error {
+    color: var(--color-overflow-error);
+}
+
+.overflow__message.overflow__message--success {
+    color: var(--color-overflow-success);
+}
+
+.disabled {
+    cursor: auto !important;
+    pointer-events: none !important;
+    opacity: .5 !important;
+}
+
+#callback .container {
+    max-width: 800px;
+}
+
+#callback .button[type="submit"] {
+    width: 100%;
 }

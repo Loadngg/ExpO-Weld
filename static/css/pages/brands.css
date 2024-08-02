@@ -2,7 +2,6 @@
 .brands__inner {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
     grid-column-gap: var(--spacing-xxl);
     grid-row-gap: var(--spacing-xxl);
 }
@@ -34,12 +33,10 @@
     max-width: 60%;
 }
 
-.brand__left h2 {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: left;
-    gap: var(--spacing-base);
+.brand__left a {
+    font-size: var(--fs-xl);
+    margin-bottom: var(--spacing-xl);
+    font-weight: 700;
 }
 
 .brand__logo {

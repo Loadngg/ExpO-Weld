@@ -11,6 +11,10 @@
 
     --box-shadow: 0 0 8px 0px rgba(7, 11, 23, 0.4);
 
+    --color-overflow-bg: rgba(7, 11, 23, .8);
+    --color-overflow-error: var(--color-red);
+    --color-overflow-success: rgb(123, 215, 129);
+
     --fs-s: 13px;
     --fs-base: 16px;
     --fs-m: 20px;

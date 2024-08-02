@@ -20,19 +20,24 @@
         <div class="container">
             <div class="brand__inner">
                 <div class="brand__left">
-                    <h2>
-                        {{ brand.name }}
-                        {% if brand.brand_site %}
-                            -
-                            <a href="{{ brand.brand_site }}">Официальный сайт</a>
-                        {% endif %}
-                    </h2>
+                    {% if brand.brand_site %}
+                        <a href="{{ brand.brand_site }}">{{ brand.name }}</a>
+                    {% else %}
+                        <h2>{{ brand.name }}</h2>
+                    {% endif %}
 
                     <p class="brand__description">
                         {{ brand.description }}
                     </p>
                 </div>
-                <img class="brand__logo" src="{{ brand.logo.url }}" alt="{{ brand.name }}: логотип">
+            
+                {% if brand.brand_site %}
+                    <a href="{{ brand.brand_site }}" class="brand__logo">
+                        <img class="brand__logo" src="{{ brand.logo.url }}" alt="{{ brand.name }}: логотип">
+                    </a>
+                {% else %}
+                    <img class="brand__logo" src="{{ brand.logo.url }}" alt="{{ brand.name }}: логотип">
+                {% endif %}
             </div>
         </div>
     </section>

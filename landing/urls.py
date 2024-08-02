@@ -12,4 +12,5 @@ urlpatterns = [
     path("services/warranty", views.ServicesWarrantyView.as_view(), name="services.warranty"),
     path("services/repair", views.ServicesRepairView.as_view(), name="services.repair"),
     path("services/leasing", views.ServicesLeasingView.as_view(), name="services.leasing"),
+    path('callback/', views.CallbackView.as_view(), name='callback')
 ]

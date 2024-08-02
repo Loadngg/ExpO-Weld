@@ -286,4 +286,16 @@
     .catalog__inner {
         grid-template-columns: repeat(1, 1fr);
     }
+
+    .overflow__block input,
+    .overflow__block textarea {
+        border-radius: var(--spacing-m);
+        font-size: var(--fs-m);
+        padding: var(--spacing-m);
+    }
+
+    .overflow__message {
+        font-size: var(--fs-m);
+        padding: var(--spacing-m);
+    }
 }
