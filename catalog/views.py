@@ -96,7 +96,6 @@ class CategoryDetailView(DetailView):
         if not has_specs:
             products_list = products
 
-        print(products_list)
         for spec_str in selected_specs:
             if not spec_str.startswith('spec_'):
                 continue
@@ -115,8 +114,6 @@ class CategoryDetailView(DetailView):
                 Q(replaced_value=spec_value) & Q(productspec__type=spec_type)
             )
 
-        print(products_list)
-
         for spec_str in selected_specs:
             if not spec_str.startswith('brand_'):
                 continue
@@ -124,7 +121,6 @@ class CategoryDetailView(DetailView):
             brand_name = spec_str.replace('brand_', '')
             selected_brands.append(brand_name)
 
-        print(products_list)
         if len(selected_brands) != 0:
             products_list = [product for product in products_list if product.brand.name in selected_brands]
 
