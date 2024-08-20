@@ -11,8 +11,24 @@
             <a class="header__nav_link" href="{% url 'category_list' %}">Каталог</a>
             <div class="nav__floating">
                 {% for category in context_categories %}
-                    <a class="header__nav_link"
-                       href="{% url 'category_detail' slug=category.slug %}">{{ category.name }}</a>
+                    <div class="header__nav_link header__nav_link--pc header__nav_link__floating">
+                        <a class="header__nav_link"
+                           href="{% url 'category_detail' slug=category.slug %}">
+                            {{ category.name }}
+                            {% if category.category_set.all|length != 0 %}
+                                &raquo;
+                            {% endif %}
+                        </a>
+
+                        {% if category.category_set.all|length != 0 %}
+                            <div class="nav__floating nav__floating--right">
+                                {% for subcategory in category.category_set.all %}
+                                    <a class="header__nav_link"
+                                       href="{% url 'category_detail' slug=subcategory.slug %}">{{ subcategory.name }}</a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
                 {% endfor %}
             </div>
         </div>

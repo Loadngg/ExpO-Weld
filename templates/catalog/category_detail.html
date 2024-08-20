@@ -25,7 +25,9 @@
                 <div class="category__list">
                     {% for category in categories_list|dictsort:"position" %}
                         <div class="category__item">
-                            <h2>{{ category.name }}</h2>
+                            <a href="{% url 'category_detail' slug=category.slug %}">
+                                <h2>{{ category.name }}</h2>
+                            </a>
                             {% if category.products.all|length != 0 %}
                                 <div class="popular_products__block">
                                     {% for product in category.product_set.all|slice:":10" %}
@@ -69,12 +71,33 @@
                 </div>
             {% else %}
                 <div class="catalog__block">
-                    {% if spec_types.items|length != 0 %}
+                    {% if spec_types.items|length != 0 or brands|length != 0 %}
                         <button class="button catalog__show_filters__button" onclick="toggleFilters(event, this)">Скрыть
                             фильтры
                         </button>
                         <form action="" method="get" id="filters-form">
                             <ul id="filters-accordion" class="accordionjs">
+                                {% if brands|length != 0 %}
+                                    <li>
+                                        <h5>Бренд</h5>
+                                        <ul>
+                                            {% for brand in brands %}
+                                                <li>
+                                                    <label>
+                                                        <input type="checkbox"
+                                                               name="brand_{{ brand }}"
+                                                               value="{{ brand }}"
+                                                                {% if brand in selected_brands %}
+                                                               checked
+                                                                {% endif %}
+                                                        >
+                                                        {{ brand }}
+                                                    </label>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
                                 {% for spec_type, values in spec_types.items %}
                                     <li>
                                         <h5>{{ spec_type.name }}</h5>

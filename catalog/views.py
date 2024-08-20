@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Q, F, Func, Value
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView, DetailView
@@ -17,18 +17,35 @@ class CategoryListView(ListView):
 
 def get_spec_types_filters(products, category):
     spec_types = {}
+    brands = {}
+
     for product in products:
         for spec in product.productspec_set.all():
-            if (
-                    category not in spec.type.categories.all()
-                    or spec.type.categories is None
-                    or not spec.type.is_filter
-            ):
+            if not spec.type.is_filter:
+                continue
+
+            if spec.type.categories is None:
+                continue
+
+            ancestors = category.get_ancestors()
+            ancestors.append(category)
+
+            descendants = category.get_descendants()
+            descendants.append(category)
+
+            if not any(ancestor in spec.type.categories.all() for ancestor in list(set(ancestors + descendants))):
                 continue
 
             if spec.type not in spec_types:
                 spec_types[spec.type] = []
             spec_types[spec.type].append(spec.value.replace(",", "."))
+
+        if not product.brand:
+            continue
+
+        if product.brand.name not in brands:
+            brands[product.brand.name] = []
+        brands[product.brand.name].append(product.brand.name)
 
     sorted_spec_types = {}
     for key in sorted(spec_types.keys(), key=lambda x: x.name):
@@ -38,7 +55,9 @@ def get_spec_types_filters(products, category):
 
         sorted_spec_types[key] = values
 
-    return sorted_spec_types
+    sorted_brands = sorted(brands.keys())
+
+    return sorted_spec_types, sorted_brands
 
 
 class CategoryDetailView(DetailView):
@@ -51,7 +70,9 @@ class CategoryDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         category = self.get_object()
         context["categories_list"] = Category.objects.filter(parent_category__slug=self.kwargs['slug'])
-        context["spec_types"] = get_spec_types_filters(category.product_set.all(), category)
+        spec_types, brands = get_spec_types_filters(category.product_set.all(), category)
+        context["spec_types"] = spec_types
+        context["brands"] = brands
 
         products = category.products
         selected_specs = self.request.GET
@@ -63,20 +84,53 @@ class CategoryDetailView(DetailView):
         products_list = []
         spec_type_ids = []
         spec_type_values = []
+        selected_brands = []
+
+        has_specs = False
         for spec_str in selected_specs:
-            if spec_str.startswith('spec_'):
-                spec = spec_str.replace('spec_type_id_', '').split("_spec_")
-                spec_type_id = int(spec[0])
-                spec_type_ids.append(spec_type_id)
+            if not spec_str.startswith('spec_'):
+                continue
 
-                spec_value = spec[1]
-                spec_type_values.append(spec_value)
-                spec_type = ProductSpecType.objects.get(id=spec_type_id)
+            has_specs = True
 
-                products_list += products.filter(Q(productspec__value=spec_value) & Q(productspec__type=spec_type))
+        if not has_specs:
+            products_list = products
+
+        print(products_list)
+        for spec_str in selected_specs:
+            if not spec_str.startswith('spec_'):
+                continue
+
+            spec = spec_str.replace('spec_type_id_', '').split("_spec_")
+            spec_type_id = int(spec[0])
+            spec_type_ids.append(spec_type_id)
+
+            spec_value = spec[1]
+            spec_type_values.append(spec_value)
+            spec_type = ProductSpecType.objects.get(id=spec_type_id)
+
+            products_list += Product.objects.annotate(
+                replaced_value=Func(F('productspec__value'), Value(','), Value('.'), function='REPLACE')
+            ).filter(
+                Q(replaced_value=spec_value) & Q(productspec__type=spec_type)
+            )
+
+        print(products_list)
+
+        for spec_str in selected_specs:
+            if not spec_str.startswith('brand_'):
+                continue
+
+            brand_name = spec_str.replace('brand_', '')
+            selected_brands.append(brand_name)
+
+        print(products_list)
+        if len(selected_brands) != 0:
+            products_list = [product for product in products_list if product.brand.name in selected_brands]
 
         context['spec_type_ids'] = spec_type_ids
         context['spec_type_values'] = spec_type_values
+        context['selected_brands'] = selected_brands
         context['products'] = set(products_list)
         return context
 

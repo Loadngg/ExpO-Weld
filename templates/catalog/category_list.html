@@ -24,7 +24,9 @@
             <div class="category__list">
                 {% for category in category_list|dictsort:"position" %}
                     <div class="category__item">
-                        <h2>{{ category.name }}</h2>
+                        <a href="{% url 'category_detail' slug=category.slug %}">
+                           <h2>{{ category.name }}</h2>
+                        </a>
                         {% if category.products.all|length != 0 %}
                             <div class="popular_products__block">
                                 {% for product in category.products.all|slice:":10" %}

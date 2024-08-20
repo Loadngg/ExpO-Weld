@@ -54,6 +54,14 @@ class Category(models.Model):
             descendants.extend(child.get_descendants())
         return descendants
 
+    def get_ancestors(self):
+        ancestors = []
+        current = self
+        while current.parent_category is not None:
+            ancestors.append(current.parent_category)
+            current = current.parent_category
+        return ancestors
+
     @property
     def products(self):
         descendants = self.get_descendants()
