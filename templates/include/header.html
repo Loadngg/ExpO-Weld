@@ -10,7 +10,7 @@
         <div class="header__nav_link header__nav_link--pc header__nav_link__floating">
             <a class="header__nav_link" href="{% url 'category_list' %}">Каталог</a>
             <div class="nav__floating">
-                {% for category in context_categories %}
+                {% for category in context_categories|dictsort:'position' %}
                     <div class="header__nav_link header__nav_link--pc header__nav_link__floating">
                         <a class="header__nav_link"
                            href="{% url 'category_detail' slug=category.slug %}">

@@ -48,7 +48,8 @@ def get_spec_types_filters(products, category):
         brands[product.brand.name].append(product.brand.name)
 
     sorted_spec_types = {}
-    for key in sorted(spec_types.keys(), key=lambda x: x.name):
+
+    for key in sorted(spec_types.keys(), key=lambda x: x.position):
         values = sorted(list(set(spec_types[key])))
         if len(values) == 1:
             continue
