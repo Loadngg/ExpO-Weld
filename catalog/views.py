@@ -4,7 +4,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView
 
 from .forms import SearchForm
-from .models import Category, Product, Brand, ProductSpecType
+from .models import Category, Product, Brand, ProductSpecType, ProductFilterValue
 
 
 class CategoryListView(ListView):
@@ -36,9 +36,18 @@ def get_spec_types_filters(products, category):
             if not any(ancestor in spec.type.categories.all() for ancestor in list(set(ancestors + descendants))):
                 continue
 
+            spec_filter_values = ProductFilterValue.objects.filter(filter=spec.type)
+            if len(spec_filter_values) == 0:
+                continue
+
             if spec.type not in spec_types:
                 spec_types[spec.type] = []
-            spec_types[spec.type].append(spec.value.replace(",", "."))
+
+            spec_values = []
+            for value in spec_filter_values:
+                spec_values.append(value.value.replace(",", "."))
+
+            spec_types[spec.type] = spec_values
 
         if not product.brand:
             continue
@@ -112,7 +121,7 @@ class CategoryDetailView(DetailView):
             products_list += Product.objects.annotate(
                 replaced_value=Func(F('productspec__value'), Value(','), Value('.'), function='REPLACE')
             ).filter(
-                Q(replaced_value=spec_value) & Q(productspec__type=spec_type)
+                Q(replaced_value__iregex=spec_value) & Q(productspec__type=spec_type) & Q(parent_category__slug=self.kwargs['slug'])
             )
 
         for spec_str in selected_specs:

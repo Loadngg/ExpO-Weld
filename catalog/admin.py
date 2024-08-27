@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import Brand, Category, Product, ProductImage, ProductSpec, ProductSpecType, ProductDocument
+from .models import Brand, Category, Product, ProductImage, ProductSpec, ProductSpecType, ProductDocument, \
+    ProductFilterValue
 
 
 @admin.register(Brand)
@@ -60,6 +61,16 @@ class ProductSpecTypeAdmin(admin.ModelAdmin):
     autocomplete_fields = ("categories",)
     search_fields = ("name",)
     list_filter = ["is_filter"]
+
+
+@admin.register(ProductFilterValue)
+class ProductFilterValueAdmin(admin.ModelAdmin):
+    list_display = ("id", "value", "filter")
+    list_display_links = ("id",)
+    save_as = True
+    autocomplete_fields = ("filter",)
+    search_fields = ("name",)
+    list_filter = ["filter"]
 
 
 class ProductImageInline(admin.TabularInline):

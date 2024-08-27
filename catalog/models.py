@@ -159,6 +159,21 @@ class ProductSpec(models.Model):
         verbose_name_plural = "Характеристики"
 
 
+class ProductFilterValue(models.Model):
+    """"""
+
+    filter = models.ForeignKey(ProductSpecType, on_delete=models.CASCADE, blank=False, null=False,
+                               verbose_name="Фильтр")
+    value = models.CharField("Значение", max_length=100)
+
+    def __str__(self):
+        return f"{self.filter} - {self.value}"
+
+    class Meta:
+        verbose_name = "Значение фильтра"
+        verbose_name_plural = "Значения фильтров"
+
+
 class ProductDocument(models.Model):
     """Документ"""
 
