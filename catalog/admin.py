@@ -28,9 +28,9 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "position")
+    list_display = ("id", "name", "position", "parent_category")
     list_display_links = ("id", "name")
-    list_editable = ("position",)
+    list_editable = ("position", "parent_category")
     list_filter = ["parent_category"]
     save_as = True
     readonly_fields = ("slug",)
@@ -93,7 +93,7 @@ class ProductDocumentInline(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ("id", "name", "article", "price", "parent_category", "is_popular")
     list_display_links = ("id", "name")
-    list_editable = ("is_popular",)
+    list_editable = ("is_popular", "parent_category")
     readonly_fields = ("slug",)
     autocomplete_fields = ("brand", "parent_category")
     search_fields = ("name", "article")
