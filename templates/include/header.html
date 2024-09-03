@@ -22,7 +22,7 @@
 
                         {% if category.category_set.all|length != 0 %}
                             <div class="nav__floating nav__floating--right">
-                                {% for subcategory in category.category_set.all %}
+                                {% for subcategory in category.category_set.all|dictsort:"position" %}
                                     <a class="header__nav_link"
                                        href="{% url 'category_detail' slug=subcategory.slug %}">{{ subcategory.name }}</a>
                                 {% endfor %}
